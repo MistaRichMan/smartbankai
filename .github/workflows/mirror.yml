@@ -1,0 +1,21 @@
+name: Mirror to MistaRichMan/smartbankai
+
+on:
+  push:
+    branches:
+      - '**'
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Push to mirror repository
+        run: |
+          git remote add mirror https://x-access-token:${{ secrets.MIRROR_PAT }}@github.com/MistaRichMan/smartbankai.git
+          git push mirror --all --force
+          git push mirror --tags --force
