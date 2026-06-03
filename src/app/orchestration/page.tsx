@@ -246,7 +246,7 @@ export default function OrchestrationPage() {
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                         </svg>
                       </div>
-                      <span className="text-sm font-semibold text-white">Claude Orchestration Decision</span>
+                      <span className="text-sm font-semibold text-white">AI Orchestration Decision</span>
                       <span className="ml-auto text-xs text-accent-green bg-accent-green/10 border border-accent-green/20 px-2 py-0.5 rounded-full">Live</span>
                     </div>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

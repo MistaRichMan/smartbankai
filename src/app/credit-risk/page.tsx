@@ -363,7 +363,7 @@ export default function CreditRiskPage() {
               </div>
 
               <div className="bg-surface-card border border-surface-border rounded-2xl p-5">
-                <h3 className="text-sm font-semibold text-white mb-4">Claude AI Credit Assessment</h3>
+                <h3 className="text-sm font-semibold text-white mb-4">AI Credit Assessment</h3>
                 {assessError && <div className="px-4 py-3 bg-accent-red/10 border border-accent-red/20 rounded-xl text-sm text-accent-red mb-4">{assessError}</div>}
                 {creditResult ? (
                   <div className="space-y-4">
@@ -412,7 +412,7 @@ export default function CreditRiskPage() {
                     <div className="w-12 h-12 rounded-xl bg-surface-elevated flex items-center justify-center mb-3">
                       <svg className="w-6 h-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>
                     </div>
-                    <p className="text-sm text-gray-500">Submit application to get Claude AI credit assessment</p>
+                    <p className="text-sm text-gray-500">Submit application to get AI credit assessment</p>
                     <p className="text-xs text-gray-600 mt-1">Pre-filled with LOAN-4421 from Web Banking Portal</p>
                   </div>
                 )}

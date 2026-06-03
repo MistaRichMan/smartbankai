@@ -401,7 +401,7 @@ export default function CompliancePage() {
             <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
               <div className="bg-surface-card border border-surface-border rounded-2xl p-5">
                 <h3 className="text-sm font-semibold text-white mb-1">Compliance Assessment</h3>
-                <p className="text-xs text-gray-500 mb-4">Powered by Claude AI · Uses live AML alerts from banking channels</p>
+                <p className="text-xs text-gray-500 mb-4">Powered by SmartBankAI Engine · Uses live AML alerts from banking channels</p>
                 <div className="space-y-3">
                   <div>
                     <label className="block text-xs font-medium text-gray-400 mb-1">Framework</label>
@@ -436,7 +436,7 @@ export default function CompliancePage() {
               </div>
 
               <div className="bg-surface-card border border-surface-border rounded-2xl p-5">
-                <h3 className="text-sm font-semibold text-white mb-4">Claude AI Compliance Report</h3>
+                <h3 className="text-sm font-semibold text-white mb-4">AI Compliance Report</h3>
                 {assessError && <div className="px-4 py-3 bg-accent-red/10 border border-accent-red/20 rounded-xl text-sm text-accent-red mb-4">{assessError}</div>}
                 {assessmentResult ? (
                   <div className="space-y-4">
@@ -476,7 +476,7 @@ export default function CompliancePage() {
                     <div className="w-12 h-12 rounded-xl bg-surface-elevated flex items-center justify-center mb-3">
                       <svg className="w-6 h-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
                     </div>
-                    <p className="text-sm text-gray-500">Run assessment to get Claude AI compliance report</p>
+                    <p className="text-sm text-gray-500">Run assessment to get AI compliance report</p>
                     <p className="text-xs text-gray-600 mt-1">Uses live AML alerts from banking channels</p>
                   </div>
                 )}

@@ -14,7 +14,7 @@ interface PersonalizationProfile {
   productRecommendations: string[];
   savingsOpportunities: string[];
   budgetingTips: string[];
-  claudeInsights: string;
+    aiInsights: string;
 }
 
 const sampleProfiles = [
@@ -105,7 +105,7 @@ export default function PersonalizationPage() {
           productRecommendations: r.product_recommendations || [],
           savingsOpportunities: r.savings_opportunities || [],
           budgetingTips: r.budgeting_tips || [],
-          claudeInsights: r.analysis || '',
+                    aiInsights: r.analysis || '',
         });
       } else {
         setError(data.error || 'Analysis failed');
@@ -293,7 +293,7 @@ export default function PersonalizationPage() {
             </div>
           </div>
 
-          {/* Claude AI Insights */}
+          {/* AI Insights */}
           <div className="bg-white border border-surface-border rounded-2xl p-5 shadow-card">
             <div className="flex items-center gap-2 mb-4">
               <div className="w-6 h-6 rounded-lg bg-primary flex items-center justify-center">
@@ -301,7 +301,7 @@ export default function PersonalizationPage() {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                 </svg>
               </div>
-              <h3 className="text-sm font-semibold text-brand-dark">Claude AI Personalization Analysis</h3>
+              <h3 className="text-sm font-semibold text-brand-dark">AI Personalization Analysis</h3>
               {profile && <span className="ml-auto text-xs text-accent-green bg-accent-green/10 border border-accent-green/20 px-2 py-0.5 rounded-full">Live Analysis</span>}
             </div>
 
@@ -328,7 +328,7 @@ export default function PersonalizationPage() {
                     <p className="text-xs text-brand-dark">{insight}</p>
                   </div>
                 )) : profile ? (
-                  <p className="text-xs text-brand-grey italic p-3 bg-surface-elevated rounded-xl">{profile.claudeInsights}</p>
+                                  <p className="text-xs text-brand-grey italic p-3 bg-surface-elevated rounded-xl">{profile.aiInsights}</p>
                 ) : (
                   <div className="text-center py-8">
                     <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-3">

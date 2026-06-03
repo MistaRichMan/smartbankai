@@ -403,7 +403,7 @@ export default function FraudDetectionPage() {
               </div>
 
               <div className="bg-surface-card border border-surface-border rounded-2xl p-5">
-                <h3 className="text-sm font-semibold text-white mb-4">Claude AI Fraud Assessment</h3>
+                <h3 className="text-sm font-semibold text-white mb-4">AI Fraud Assessment</h3>
                 {analysisError && <div className="px-4 py-3 bg-accent-red/10 border border-accent-red/20 rounded-xl text-sm text-accent-red mb-4">{analysisError}</div>}
                 {analysisResult ? (
                   <div className="space-y-4">
@@ -441,7 +441,7 @@ export default function FraudDetectionPage() {
                     <div className="w-12 h-12 rounded-xl bg-surface-elevated flex items-center justify-center mb-3">
                       <svg className="w-6 h-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
                     </div>
-                    <p className="text-sm text-gray-500">Submit a transaction to get Claude AI fraud assessment</p>
+                    <p className="text-sm text-gray-500">Submit a transaction to get AI fraud assessment</p>
                     <p className="text-xs text-gray-600 mt-1">Pre-filled with TXN-10004 from Web Banking Portal</p>
                   </div>
                 )}

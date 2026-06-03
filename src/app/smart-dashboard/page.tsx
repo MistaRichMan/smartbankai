@@ -164,7 +164,7 @@ export default function SmartDashboardPage() {
             <div className="flex items-center justify-between flex-wrap gap-3">
               <div>
                 <h3 className="text-sm font-semibold text-white">AI Executive Insights</h3>
-                <p className="text-xs text-gray-500 mt-0.5">Claude AI analyzes {totalTransactions} transactions across all channels</p>
+                <p className="text-xs text-gray-500 mt-0.5">SmartBankAI Engine analyzes {totalTransactions} transactions across all channels</p>
               </div>
               <div className="flex items-center gap-3">
                 <select value={timeRange} onChange={(e) => setTimeRange(e.target.value)}

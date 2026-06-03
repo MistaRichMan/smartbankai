@@ -41,7 +41,7 @@ const initialMessages: Message[] = [
   {
     id: '1',
     role: 'agent',
-    content: 'Hello! I\'m SmartBank AI, your intelligent banking assistant powered by Claude. I can help you in English, Yoruba, Hausa, Igbo, Swahili, French, Arabic, and Portuguese. How can I assist you today?',
+    content: 'Hello! I\'m SmartBank AI, your intelligent banking assistant. I can help you in English, Yoruba, Hausa, Igbo, Swahili, French, Arabic, and Portuguese. How can I assist you today?',
     timestamp: '12:00 AM',
     language: 'English',
     intent: 'greeting',
@@ -167,7 +167,7 @@ export default function ConversationalPage() {
     <div className="flex h-screen bg-surface overflow-hidden">
       <Sidebar />
       <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
-        <Header title="Conversational AI Agent" subtitle="Claude-powered NLP banking assistant with African language support" />
+        <Header title="Conversational AI Agent" subtitle="AI-powered NLP banking assistant with African language support" />
         <main className="flex-1 overflow-hidden flex flex-col p-6 gap-4">
 
           {/* Tabs */}
@@ -198,7 +198,7 @@ export default function ConversationalPage() {
                     <div className="text-xs font-semibold text-white">SmartBank AI Assistant</div>
                     <div className="flex items-center gap-1.5">
                       <div className="w-1.5 h-1.5 rounded-full bg-accent-green animate-pulse-slow"></div>
-                      <span className="text-xs text-gray-500">Claude-powered · Online</span>
+                      <span className="text-xs text-gray-500">SmartBankAI Engine · Online</span>
                     </div>
                   </div>
                   <div className="ml-auto">
@@ -296,7 +296,7 @@ export default function ConversationalPage() {
                     </div>
                     <div className="flex justify-between">
                       <span className="text-xs text-gray-500">Model</span>
-                      <span className="text-xs text-accent-green">Claude Sonnet</span>
+                      <span className="text-xs text-accent-green">SmartBankAI Engine</span>
                     </div>
                   </div>
                 </div>

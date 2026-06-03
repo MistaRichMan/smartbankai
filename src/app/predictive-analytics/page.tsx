@@ -292,7 +292,7 @@ export default function PredictiveAnalyticsPage() {
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
                     </svg>
                   </div>
-                  <h3 className="text-sm font-semibold text-brand-dark">Claude AI Forecast Insights</h3>
+                  <h3 className="text-sm font-semibold text-brand-dark">AI Forecast Insights</h3>
                 </div>
                 {result ? (
                   <div className="space-y-3">
@@ -319,7 +319,7 @@ export default function PredictiveAnalyticsPage() {
                 ) : (
                   <div className="text-center py-8">
                     <p className="text-sm font-medium text-brand-dark mb-1">Run the forecast</p>
-                    <p className="text-xs text-brand-grey">Click "Run Forecast" to see Claude AI insights and risk alerts</p>
+                    <p className="text-xs text-brand-grey">Click "Run Forecast" to see AI insights and risk alerts</p>
                   </div>
                 )}
               </div>

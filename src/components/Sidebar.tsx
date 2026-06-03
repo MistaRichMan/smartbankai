@@ -10,6 +10,8 @@ interface NavItem {
   href: string;
   icon: React.ReactNode;
   badge?: string;
+  adminOnly?: boolean;
+  newTab?: boolean;
 }
 
 const navItems: NavItem[] = [
@@ -54,6 +56,7 @@ const navItems: NavItem[] = [
   {
     label: 'Deployment',
     href: '/deployment',
+    adminOnly: true,
     icon: (
       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M5 12H3l9-9 9 9h-2M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7" />
@@ -63,6 +66,8 @@ const navItems: NavItem[] = [
   {
     label: 'Web Banking',
     href: '/banking',
+    adminOnly: true,
+    newTab: true,
     icon: (
       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
@@ -73,6 +78,8 @@ const navItems: NavItem[] = [
   {
     label: 'Mobile Banking',
     href: '/mobile-banking',
+    adminOnly: true,
+    newTab: true,
     icon: (
       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
@@ -83,6 +90,7 @@ const navItems: NavItem[] = [
   {
     label: 'Architecture',
     href: '/architecture',
+    adminOnly: true,
     icon: (
       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 5a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1V5zm10 0a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1V5zM4 15a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1H5a1 1 0 01-1-1v-4zm10 0a1 1 0 011-1h4a1 1 0 011 1v4a1 1 0 01-1 1h-4a1 1 0 01-1-1v-4z" />
@@ -164,6 +172,7 @@ const navItems: NavItem[] = [
   {
     label: 'About',
     href: '/about',
+    adminOnly: true,
     icon: (
       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -173,6 +182,7 @@ const navItems: NavItem[] = [
   {
     label: 'Contact & Demo',
     href: '/contact',
+    adminOnly: true,
     icon: (
       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -185,6 +195,11 @@ export default function Sidebar() {
   const pathname = usePathname();
   const [collapsed, setCollapsed] = useState(false);
   const { profile, signOut, isAdmin } = useAuth();
+
+  const visibleNavItems = navItems.filter(item => {
+    if (item.adminOnly && !isAdmin) return false;
+    return true;
+  });
 
   return (
     <aside className={`${collapsed ? 'w-16' : 'w-64'} flex-shrink-0 bg-white border-r border-surface-border flex flex-col transition-all duration-300 relative z-20 shadow-sm`}>
@@ -230,12 +245,14 @@ export default function Sidebar() {
 
       {/* Nav */}
       <nav className="flex-1 px-2 py-3 space-y-0.5 overflow-y-auto">
-        {navItems.map((item) => {
+        {visibleNavItems.map((item) => {
           const isActive = pathname === item.href;
           return (
             <Link
               key={item.href}
               href={item.href}
+              target={item.newTab ? '_blank' : undefined}
+              rel={item.newTab ? 'noopener noreferrer' : undefined}
               className={`flex items-center gap-3 px-3 py-2 rounded-xl transition-all duration-200 group relative ${
                 isActive
                   ? 'bg-primary text-white shadow-card'

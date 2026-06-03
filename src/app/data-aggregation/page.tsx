@@ -372,7 +372,7 @@ export default function DataAggregationPage() {
                 ) : (
                   <div className="text-center py-8">
                     <p className="text-sm font-medium text-brand-dark mb-1">Run aggregation to see quality report</p>
-                    <p className="text-xs text-brand-grey">Claude AI will analyze data quality and suggest cleansing actions</p>
+                    <p className="text-xs text-brand-grey">SmartBankAI Engine will analyze data quality and suggest cleansing actions</p>
                   </div>
                 )}
               </div>
