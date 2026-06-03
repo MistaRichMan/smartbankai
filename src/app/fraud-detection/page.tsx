@@ -116,8 +116,8 @@ export default function FraudDetectionPage() {
             {mlMetrics.map((m) => (
               <div key={m.label} className="bg-surface-card border border-surface-border rounded-2xl p-4">
                 <div className={`text-2xl font-bold ${m.color} mb-1`}>{m.value}</div>
-                <div className="text-sm font-medium text-white">{m.label}</div>
-                <div className="text-xs text-gray-500 mt-0.5">{m.sub}</div>
+                <div className="text-sm font-medium text-brand-dark">{m.label}</div>
+                <div className="text-xs text-brand-grey mt-0.5">{m.sub}</div>
               </div>
             ))}
           </div>
@@ -132,8 +132,8 @@ export default function FraudDetectionPage() {
             ].map(kpi => (
               <div key={kpi.label} className="bg-surface-card border border-surface-border rounded-xl p-3">
                 <div className={`text-xl font-bold ${kpi.color}`}>{kpi.value}</div>
-                <div className="text-xs font-medium text-white mt-0.5">{kpi.label}</div>
-                <div className="text-xs text-gray-500">{kpi.sub}</div>
+                <div className="text-xs font-medium text-brand-dark mt-0.5">{kpi.label}</div>
+                <div className="text-xs text-brand-grey">{kpi.sub}</div>
               </div>
             ))}
           </div>
@@ -142,7 +142,7 @@ export default function FraudDetectionPage() {
           <div className="flex gap-2 flex-wrap">
             {(['overview', 'cases', 'transactions', 'analyze', 'model'] as const).map((tab) => (
               <button key={tab} onClick={() => setActiveTab(tab)}
-                className={`px-4 py-2 rounded-xl text-xs font-medium capitalize transition-all ${activeTab === tab ? 'bg-gradient-primary text-white shadow-glow-blue' : 'bg-surface-elevated text-gray-400 hover:text-white border border-surface-border'}`}>
+                className={`px-4 py-2 rounded-xl text-xs font-medium capitalize transition-all ${activeTab === tab ? 'bg-gradient-primary text-white shadow-glow-blue' : 'bg-surface-elevated text-brand-grey hover:text-brand-dark border border-surface-border'}`}>
                 {tab === 'overview' ? 'Live Overview' : tab === 'cases' ? `Fraud Cases (${DEMO_FRAUD_CASES.length})` : tab === 'transactions' ? `Flagged Txns (${flaggedTransactions.length})` : tab === 'analyze' ? '🔍 Analyze' : 'ML Model'}
               </button>
             ))}
@@ -154,8 +154,8 @@ export default function FraudDetectionPage() {
                 <div className="bg-surface-card border border-surface-border rounded-2xl p-5">
                   <div className="flex items-center justify-between mb-5">
                     <div>
-                      <h3 className="text-sm font-semibold text-white">Hourly Fraud Activity</h3>
-                      <p className="text-xs text-gray-500 mt-0.5">Flagged vs blocked transactions today</p>
+                      <h3 className="text-sm font-semibold text-brand-dark">Hourly Fraud Activity</h3>
+                      <p className="text-xs text-brand-grey mt-0.5">Flagged vs blocked transactions today</p>
                     </div>
                     <div className="flex items-center gap-4 text-xs text-gray-500">
                       <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-accent-amber inline-block"></span>Flagged</span>
@@ -175,8 +175,8 @@ export default function FraudDetectionPage() {
                 </div>
 
                 <div className="bg-surface-card border border-surface-border rounded-2xl p-5">
-                  <h3 className="text-sm font-semibold text-white mb-1">Weekly Risk Score Trend</h3>
-                  <p className="text-xs text-gray-500 mb-4">Portfolio-level fraud risk index (0–100)</p>
+                  <h3 className="text-sm font-semibold text-brand-dark mb-1">Weekly Risk Score Trend</h3>
+                  <p className="text-xs text-brand-grey mb-4">Portfolio-level fraud risk index (0–100)</p>
                   <ResponsiveContainer width="100%" height={200}>
                     <AreaChart data={riskTrendData}>
                       <defs>
@@ -197,31 +197,31 @@ export default function FraudDetectionPage() {
 
               {/* Channel Fraud Rates */}
               <div className="bg-surface-card border border-surface-border rounded-2xl p-5">
-                <h3 className="text-sm font-semibold text-white mb-4">Fraud Rate by Channel — All Banking Channels</h3>
+                <h3 className="text-sm font-semibold text-brand-dark mb-4">Fraud Rate by Channel — All Banking Channels</h3>
                 <div className="space-y-3">
                   {CHANNEL_TRANSACTION_VOLUME.map((ch) => (
                     <div key={ch.channel} className="flex items-center gap-3">
-                      <span className="text-xs text-gray-400 w-36 flex-shrink-0">{ch.channel}</span>
+                      <span className="text-xs text-brand-grey w-36 flex-shrink-0">{ch.channel}</span>
                       <div className="flex-1 bg-surface-elevated rounded-full h-2">
                         <div className="h-2 rounded-full transition-all" style={{ width: `${(ch.fraudRate / 2.5) * 100}%`, backgroundColor: ch.fraudRate > 1.5 ? '#FF4D4D' : ch.fraudRate > 1.0 ? '#FFB020' : '#00C896' }}></div>
                       </div>
-                      <span className="text-xs font-mono text-white w-12 text-right">{ch.fraudRate}%</span>
-                      <span className="text-xs text-gray-500 w-20 text-right">{ch.count.toLocaleString()} txns</span>
+                      <span className="text-xs font-mono text-brand-dark w-12 text-right">{ch.fraudRate}%</span>
+                      <span className="text-xs text-brand-grey w-20 text-right">{ch.count.toLocaleString()} txns</span>
                     </div>
                   ))}
                 </div>
               </div>
 
               <div className="bg-surface-card border border-surface-border rounded-2xl p-5">
-                <h3 className="text-sm font-semibold text-white mb-4">Fraud Type Breakdown — African Market Patterns</h3>
+                <h3 className="text-sm font-semibold text-brand-dark mb-4">Fraud Type Breakdown — African Market Patterns</h3>
                 <div className="space-y-3">
                   {fraudTypes.map((ft) => (
                     <div key={ft.type} className="flex items-center gap-3">
-                      <span className="text-xs text-gray-400 w-40 flex-shrink-0">{ft.type}</span>
+                      <span className="text-xs text-brand-grey w-40 flex-shrink-0">{ft.type}</span>
                       <div className="flex-1 bg-surface-elevated rounded-full h-2">
                         <div className="h-2 rounded-full transition-all" style={{ width: `${(ft.count / 234) * 100}%`, backgroundColor: ft.color }}></div>
                       </div>
-                      <span className="text-xs font-mono text-white w-8 text-right">{ft.count}</span>
+                      <span className="text-xs font-mono text-brand-dark w-8 text-right">{ft.count}</span>
                       <span className={`text-xs w-12 text-right font-medium ${ft.change < 0 ? 'text-accent-green' : 'text-accent-red'}`}>
                         {ft.change > 0 ? '+' : ''}{ft.change}%
                       </span>
@@ -236,8 +236,8 @@ export default function FraudDetectionPage() {
             <div className="space-y-4">
               <div className="bg-surface-card border border-surface-border rounded-2xl overflow-hidden">
                 <div className="px-5 py-4 border-b border-surface-border flex items-center justify-between">
-                  <h3 className="text-sm font-semibold text-white">Fraud Cases — From Banking Channels</h3>
-                  <span className="text-xs text-gray-500">Sources: Web Banking · Mobile App · ATM · POS · Mobile Money</span>
+                  <h3 className="text-sm font-semibold text-brand-dark">Fraud Cases — From Banking Channels</h3>
+                  <span className="text-xs text-brand-grey">Sources: Web Banking · Mobile App · ATM · POS · Mobile Money</span>
                 </div>
                 <div className="overflow-x-auto">
                   <table className="w-full">
@@ -255,25 +255,25 @@ export default function FraudDetectionPage() {
                           <tr key={c.id} onClick={() => setSelectedCase(c)} className="hover:bg-surface-elevated transition-colors cursor-pointer">
                             <td className="px-4 py-3 text-xs font-mono text-primary">{c.id}</td>
                             <td className="px-4 py-3">
-                              <div className="text-xs text-white font-medium">{c.customerName}</div>
-                              <div className="text-xs text-gray-500">{c.customerId} · Score: {customer?.creditScore}</div>
+                              <div className="text-xs text-brand-dark font-medium">{c.customerName}</div>
+                              <div className="text-xs text-brand-grey">{c.customerId} · Score: {customer?.creditScore}</div>
                             </td>
-                            <td className="px-4 py-3 text-xs text-gray-300 whitespace-nowrap">{c.fraudType}</td>
-                            <td className="px-4 py-3 text-xs font-medium text-white whitespace-nowrap">{fmtNGN(c.amount)}</td>
-                            <td className="px-4 py-3 text-xs text-gray-400 whitespace-nowrap">{c.channel}</td>
-                            <td className="px-4 py-3 text-xs text-gray-400 whitespace-nowrap">{c.location}</td>
+                            <td className="px-4 py-3 text-xs text-brand-grey whitespace-nowrap">{c.fraudType}</td>
+                            <td className="px-4 py-3 text-xs font-medium text-brand-dark whitespace-nowrap">{fmtNGN(c.amount)}</td>
+                            <td className="px-4 py-3 text-xs text-brand-grey whitespace-nowrap">{c.channel}</td>
+                            <td className="px-4 py-3 text-xs text-brand-grey whitespace-nowrap">{c.location}</td>
                             <td className="px-4 py-3">
                               <div className="flex items-center gap-2">
                                 <div className="w-16 bg-surface-border rounded-full h-1.5">
                                   <div className="h-1.5 rounded-full" style={{ width: `${c.riskScore}%`, backgroundColor: c.riskScore > 80 ? '#FF4D4D' : c.riskScore > 60 ? '#FFB020' : '#00C896' }}></div>
                                 </div>
-                                <span className="text-xs font-mono text-white">{c.riskScore}</span>
+                                <span className="text-xs font-mono text-brand-dark">{c.riskScore}</span>
                               </div>
                             </td>
                             <td className="px-4 py-3">
                               <span className={`text-xs px-2 py-0.5 rounded-lg border capitalize ${statusStyle[c.status]}`}>{c.status}</span>
                             </td>
-                            <td className="px-4 py-3 text-xs text-gray-500 whitespace-nowrap">{fmtDate(c.detectedAt)}</td>
+                            <td className="px-4 py-3 text-xs text-brand-grey whitespace-nowrap">{fmtDate(c.detectedAt)}</td>
                           </tr>
                         );
                       })}
@@ -286,8 +286,8 @@ export default function FraudDetectionPage() {
               {selectedCase && (
                 <div className="bg-surface-card border border-surface-border rounded-2xl p-5">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-sm font-semibold text-white">Case Detail — {selectedCase.id}</h3>
-                    <button onClick={() => setSelectedCase(null)} className="text-xs text-gray-500 hover:text-white">✕ Close</button>
+                    <h3 className="text-sm font-semibold text-brand-dark">Case Detail — {selectedCase.id}</h3>
+                    <button onClick={() => setSelectedCase(null)} className="text-xs text-brand-grey hover:text-brand-dark">✕ Close</button>
                   </div>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                     {[
@@ -301,8 +301,8 @@ export default function FraudDetectionPage() {
                       { label: 'Step-up Auth', value: selectedCase.stepUp },
                     ].map(item => (
                       <div key={item.label} className="bg-surface-elevated rounded-xl p-3">
-                        <p className="text-xs text-gray-500 mb-1">{item.label}</p>
-                        <p className="text-sm text-white font-medium">{item.value}</p>
+                        <p className="text-xs text-brand-grey mb-1">{item.label}</p>
+                        <p className="text-sm text-brand-dark font-medium">{item.value}</p>
                       </div>
                     ))}
                   </div>
@@ -319,8 +319,8 @@ export default function FraudDetectionPage() {
           {activeTab === 'transactions' && (
             <div className="bg-surface-card border border-surface-border rounded-2xl overflow-hidden">
               <div className="px-5 py-4 border-b border-surface-border">
-                <h3 className="text-sm font-semibold text-white">All Flagged Transactions — Across All Channels & Customers</h3>
-                <p className="text-xs text-gray-500 mt-0.5">{flaggedTransactions.length} transactions flagged for fraud or AML review</p>
+                <h3 className="text-sm font-semibold text-brand-dark">All Flagged Transactions — Across All Channels & Customers</h3>
+                <p className="text-xs text-brand-grey mt-0.5">{flaggedTransactions.length} transactions flagged for fraud or AML review</p>
               </div>
               <div className="overflow-x-auto">
                 <table className="w-full">
@@ -338,12 +338,12 @@ export default function FraudDetectionPage() {
                         <tr key={tx.id} className="hover:bg-surface-elevated transition-colors">
                           <td className="px-4 py-3 text-xs font-mono text-primary">{tx.id}</td>
                           <td className="px-4 py-3">
-                            <div className="text-xs text-white font-medium">{customer?.name}</div>
-                            <div className="text-xs text-gray-500">{tx.customerId}</div>
+                            <div className="text-xs text-brand-dark font-medium">{customer?.name}</div>
+                            <div className="text-xs text-brand-grey">{tx.customerId}</div>
                           </td>
-                          <td className="px-4 py-3 text-xs text-gray-300 max-w-xs truncate">{tx.description}</td>
-                          <td className="px-4 py-3 text-xs font-medium text-white whitespace-nowrap">{fmtNGN(tx.amount, tx.accountId.startsWith('ACC-006') ? 'GHS' : 'NGN')}</td>
-                          <td className="px-4 py-3 text-xs text-gray-400 whitespace-nowrap">{tx.channel}</td>
+                          <td className="px-4 py-3 text-xs text-brand-grey max-w-xs truncate">{tx.description}</td>
+                          <td className="px-4 py-3 text-xs font-medium text-brand-dark whitespace-nowrap">{fmtNGN(tx.amount, tx.accountId.startsWith('ACC-006') ? 'GHS' : 'NGN')}</td>
+                          <td className="px-4 py-3 text-xs text-brand-grey whitespace-nowrap">{tx.channel}</td>
                           <td className="px-4 py-3 text-xs text-accent-red whitespace-nowrap">{tx.fraudType || '—'}</td>
                           <td className="px-4 py-3">
                             <span className={`text-xs font-bold ${tx.fraudRiskScore > 80 ? 'text-accent-red' : tx.fraudRiskScore > 60 ? 'text-accent-amber' : 'text-accent-green'}`}>{tx.fraudRiskScore}/100</span>
@@ -354,7 +354,7 @@ export default function FraudDetectionPage() {
                           <td className="px-4 py-3">
                             <span className={`text-xs px-2 py-0.5 rounded-lg border capitalize ${statusStyle[tx.status] || 'text-gray-400 border-gray-700'}`}>{tx.status}</span>
                           </td>
-                          <td className="px-4 py-3 text-xs text-gray-500 whitespace-nowrap">{fmtDate(tx.createdAt)}</td>
+                          <td className="px-4 py-3 text-xs text-brand-grey whitespace-nowrap">{fmtDate(tx.createdAt)}</td>
                         </tr>
                       );
                     })}
@@ -367,8 +367,8 @@ export default function FraudDetectionPage() {
           {activeTab === 'analyze' && (
             <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
               <div className="bg-surface-card border border-surface-border rounded-2xl p-5">
-                <h3 className="text-sm font-semibold text-white mb-4">Transaction Risk Analysis</h3>
-                <p className="text-xs text-gray-500 mb-4">Pre-filled with TXN-10004 — flagged ATM withdrawal from Web Banking Portal</p>
+                <h3 className="text-sm font-semibold text-brand-dark mb-4">Transaction Risk Analysis</h3>
+                <p className="text-xs text-brand-grey mb-4">Pre-filled with TXN-10004 — flagged ATM withdrawal from Web Banking Portal</p>
                 <div className="space-y-3">
                   {[
                     { key: 'transactionId', label: 'Transaction ID', type: 'text' },
@@ -377,23 +377,23 @@ export default function FraudDetectionPage() {
                     { key: 'customerId', label: 'Customer ID', type: 'text' },
                   ].map((field) => (
                     <div key={field.key}>
-                      <label className="block text-xs font-medium text-gray-400 mb-1">{field.label}</label>
+                      <label className="block text-xs font-medium text-brand-grey mb-1">{field.label}</label>
                       <input type={field.type} value={txForm[field.key as keyof typeof txForm]}
                         onChange={(e) => setTxForm(prev => ({ ...prev, [field.key]: e.target.value }))}
-                        className="w-full bg-surface-elevated border border-surface-border rounded-xl px-3 py-2 text-sm text-white outline-none focus:border-primary/50" />
+                        className="w-full bg-surface-elevated border border-surface-border rounded-xl px-3 py-2 text-sm text-brand-dark outline-none focus:border-primary/50" />
                     </div>
                   ))}
                   <div>
-                    <label className="block text-xs font-medium text-gray-400 mb-1">Channel</label>
+                    <label className="block text-xs font-medium text-brand-grey mb-1">Channel</label>
                     <select value={txForm.channel} onChange={(e) => setTxForm(prev => ({ ...prev, channel: e.target.value }))}
-                      className="w-full bg-surface-elevated border border-surface-border rounded-xl px-3 py-2 text-sm text-white outline-none focus:border-primary/50">
+                      className="w-full bg-surface-elevated border border-surface-border rounded-xl px-3 py-2 text-sm text-brand-dark outline-none focus:border-primary/50">
                       {['Mobile App', 'Internet Banking', 'USSD', 'POS Terminal', 'Mobile Money', 'ATM', 'Web'].map(c => <option key={c}>{c}</option>)}
                     </select>
                   </div>
                   <div>
-                    <label className="block text-xs font-medium text-gray-400 mb-1">Behavioral Signals</label>
+                    <label className="block text-xs font-medium text-brand-grey mb-1">Behavioral Signals</label>
                     <textarea value={txForm.behavioralSignals} onChange={(e) => setTxForm(prev => ({ ...prev, behavioralSignals: e.target.value }))}
-                      rows={3} className="w-full bg-surface-elevated border border-surface-border rounded-xl px-3 py-2 text-sm text-white outline-none focus:border-primary/50 resize-none" />
+                      rows={3} className="w-full bg-surface-elevated border border-surface-border rounded-xl px-3 py-2 text-sm text-brand-dark outline-none focus:border-primary/50 resize-none" />
                   </div>
                   <button onClick={runFraudAnalysis} disabled={isAnalyzing}
                     className="w-full flex items-center justify-center gap-2 py-2.5 bg-gradient-primary text-white text-sm font-medium rounded-xl hover:opacity-90 transition-opacity disabled:opacity-50">
@@ -403,7 +403,7 @@ export default function FraudDetectionPage() {
               </div>
 
               <div className="bg-surface-card border border-surface-border rounded-2xl p-5">
-                <h3 className="text-sm font-semibold text-white mb-4">AI Fraud Assessment</h3>
+                <h3 className="text-sm font-semibold text-brand-dark mb-4">AI Fraud Assessment</h3>
                 {analysisError && <div className="px-4 py-3 bg-accent-red/10 border border-accent-red/20 rounded-xl text-sm text-accent-red mb-4">{analysisError}</div>}
                 {analysisResult ? (
                   <div className="space-y-4">
@@ -452,7 +452,7 @@ export default function FraudDetectionPage() {
           {activeTab === 'model' && (
             <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
               <div className="bg-surface-card border border-surface-border rounded-2xl p-5">
-                <h3 className="text-sm font-semibold text-white mb-4">Model Performance History</h3>
+                <h3 className="text-sm font-semibold text-brand-dark mb-4">Model Performance History</h3>
                 <ResponsiveContainer width="100%" height={220}>
                   <LineChart data={[
                     { version: 'v3.8', accuracy: 96.1, precision: 95.2, recall: 97.0 },
@@ -471,7 +471,7 @@ export default function FraudDetectionPage() {
                 </ResponsiveContainer>
               </div>
               <div className="bg-surface-card border border-surface-border rounded-2xl p-5 space-y-3">
-                <h3 className="text-sm font-semibold text-white">Model Configuration</h3>
+                <h3 className="text-sm font-semibold text-brand-dark">Model Configuration</h3>
                 {[
                   { label: 'Algorithm', value: 'Gradient Boosting + Neural Net Ensemble' },
                   { label: 'Training Data', value: '48M transactions (2020–2024)' },
@@ -483,8 +483,8 @@ export default function FraudDetectionPage() {
                   { label: 'Compliance', value: 'GDPR, CBN, FATF compliant' },
                 ].map((item) => (
                   <div key={item.label} className="flex items-start justify-between gap-4 py-2 border-b border-surface-border last:border-0">
-                    <span className="text-xs text-gray-500 flex-shrink-0">{item.label}</span>
-                    <span className="text-xs text-white text-right">{item.value}</span>
+                    <span className="text-xs text-brand-grey flex-shrink-0">{item.label}</span>
+                    <span className="text-xs text-brand-dark text-right">{item.value}</span>
                   </div>
                 ))}
               </div>

@@ -262,7 +262,7 @@ export default function ConversationalPage() {
                       onKeyDown={handleKeyDown}
                       placeholder="Type a message in any language..."
                       disabled={isLoading}
-                      className="flex-1 bg-transparent text-sm text-white placeholder-gray-600 outline-none"
+                      className="flex-1 bg-transparent text-sm text-brand-dark placeholder-brand-grey outline-none"
                     />
                     <button
                       onClick={sendMessage}
@@ -280,34 +280,34 @@ export default function ConversationalPage() {
               {/* Side Panel */}
               <div className="w-64 flex-shrink-0 space-y-4">
                 <div className="bg-surface-card border border-surface-border rounded-2xl p-4">
-                  <h3 className="text-xs font-semibold text-white mb-3">Session Info</h3>
+                  <h3 className="text-xs font-semibold text-brand-dark mb-3">Session Info</h3>
                   <div className="space-y-2">
                     <div className="flex justify-between">
-                      <span className="text-xs text-gray-500">Session</span>
+                      <span className="text-xs text-brand-grey">Session</span>
                       <span className="text-xs font-mono text-primary">{sessionRef.slice(0, 12)}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-xs text-gray-500">Messages</span>
-                      <span className="text-xs text-white">{messages.length}</span>
+                      <span className="text-xs text-brand-grey">Messages</span>
+                      <span className="text-xs text-brand-dark">{messages.length}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-xs text-gray-500">Language</span>
-                      <span className="text-xs text-white">{supportedLanguages.find(l => l.code === selectedLang)?.name}</span>
+                      <span className="text-xs text-brand-grey">Language</span>
+                      <span className="text-xs text-brand-dark">{supportedLanguages.find(l => l.code === selectedLang)?.name}</span>
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-xs text-gray-500">Model</span>
+                      <span className="text-xs text-brand-grey">Model</span>
                       <span className="text-xs text-accent-green">SmartBankAI Engine</span>
                     </div>
                   </div>
                 </div>
                 <div className="bg-surface-card border border-surface-border rounded-2xl p-4">
-                  <h3 className="text-xs font-semibold text-white mb-3">Quick Prompts</h3>
+                  <h3 className="text-xs font-semibold text-brand-dark mb-3">Quick Prompts</h3>
                   <div className="space-y-1.5">
                     {['Check my balance', 'Transfer funds', 'Apply for loan', 'Pay a bill', 'Block my card'].map((prompt) => (
                       <button
                         key={prompt}
                         onClick={() => setInput(prompt)}
-                        className="w-full text-left text-xs text-gray-400 hover:text-white px-2 py-1.5 rounded-lg hover:bg-surface-elevated transition-all"
+                        className="w-full text-left text-xs text-brand-grey hover:text-brand-dark px-2 py-1.5 rounded-lg hover:bg-surface-elevated transition-all"
                       >
                         {prompt}
                       </button>
@@ -334,13 +334,13 @@ export default function ConversationalPage() {
                 ))}
               </div>
               <div className="bg-surface-card border border-surface-border rounded-2xl p-5">
-                <h3 className="text-sm font-semibold text-white mb-4">Intent Distribution</h3>
+                <h3 className="text-sm font-semibold text-brand-dark mb-4">Intent Distribution</h3>
                 <div className="space-y-3">
                   {intentStats.map((stat) => (
                     <div key={stat.intent}>
                       <div className="flex justify-between items-center mb-1">
-                        <span className="text-xs text-gray-400">{stat.intent}</span>
-                        <span className="text-xs font-semibold text-white">{stat.count.toLocaleString()} <span className="text-gray-500">({stat.pct}%)</span></span>
+                        <span className="text-xs text-brand-grey">{stat.intent}</span>
+                        <span className="text-xs font-semibold text-brand-dark">{stat.count.toLocaleString()} <span className="text-brand-grey">({stat.pct}%)</span></span>
                       </div>
                       <div className="w-full bg-surface-elevated rounded-full h-1.5">
                         <div className="bg-gradient-primary h-1.5 rounded-full" style={{ width: `${stat.pct * 3}%` }}></div>

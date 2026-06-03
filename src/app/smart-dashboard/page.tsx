@@ -137,8 +137,8 @@ export default function SmartDashboardPage() {
             ].map((kpi) => (
               <div key={kpi.label} className="bg-surface-card border border-surface-border rounded-2xl p-4">
                 <div className={`text-2xl font-bold ${kpi.color} mb-1`}>{kpi.value}</div>
-                <div className="text-sm font-medium text-white">{kpi.label}</div>
-                <div className="text-xs text-gray-500 mt-0.5">{kpi.sub}</div>
+                <div className="text-sm font-medium text-brand-dark">{kpi.label}</div>
+                <div className="text-xs text-brand-grey mt-0.5">{kpi.sub}</div>
               </div>
             ))}
           </div>
@@ -153,8 +153,8 @@ export default function SmartDashboardPage() {
             ].map((kpi) => (
               <div key={kpi.label} className="bg-surface-card border border-surface-border rounded-xl p-3">
                 <div className={`text-xl font-bold ${kpi.color}`}>{kpi.value}</div>
-                <div className="text-xs font-medium text-white mt-0.5">{kpi.label}</div>
-                <div className="text-xs text-gray-500">{kpi.sub}</div>
+                <div className="text-xs font-medium text-brand-dark mt-0.5">{kpi.label}</div>
+                <div className="text-xs text-brand-grey">{kpi.sub}</div>
               </div>
             ))}
           </div>
@@ -163,12 +163,12 @@ export default function SmartDashboardPage() {
           <div className="bg-surface-card border border-surface-border rounded-2xl p-5">
             <div className="flex items-center justify-between flex-wrap gap-3">
               <div>
-                <h3 className="text-sm font-semibold text-white">AI Executive Insights</h3>
-                <p className="text-xs text-gray-500 mt-0.5">SmartBankAI Engine analyzes {totalTransactions} transactions across all channels</p>
+                <h3 className="text-sm font-semibold text-brand-dark">AI Executive Insights</h3>
+                <p className="text-xs text-brand-grey mt-0.5">SmartBankAI Engine analyzes {totalTransactions} transactions across all channels</p>
               </div>
               <div className="flex items-center gap-3">
                 <select value={timeRange} onChange={(e) => setTimeRange(e.target.value)}
-                  className="bg-surface-elevated border border-surface-border rounded-xl px-3 py-2 text-xs text-white outline-none focus:border-primary/50">
+                  className="bg-surface-elevated border border-surface-border rounded-xl px-3 py-2 text-xs text-brand-dark outline-none focus:border-primary/50">
                   {['Today', 'This Week', 'This Month', 'This Quarter'].map(r => <option key={r}>{r}</option>)}
                 </select>
                 <button onClick={generateInsights} disabled={isGenerating}
@@ -181,9 +181,9 @@ export default function SmartDashboardPage() {
             {insights && (
               <div className="mt-4 space-y-4">
                 <div className="p-4 bg-surface-elevated rounded-xl border border-surface-border">
-                  <p className="text-xs text-gray-500 mb-1">Executive Summary</p>
-                  <p className="text-sm text-white">{insights.executive_summary}</p>
-                  <p className="text-xs text-gray-500 mt-2">Confidence: {insights.confidence}%</p>
+                  <p className="text-xs text-brand-grey mb-1">Executive Summary</p>
+                  <p className="text-sm text-brand-dark">{insights.executive_summary}</p>
+                  <p className="text-xs text-brand-grey mt-2">Confidence: {insights.confidence}%</p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
                   {[
@@ -213,7 +213,7 @@ export default function SmartDashboardPage() {
           <div className="flex gap-2 flex-wrap">
             {(['overview', 'channels', 'customers', 'anomalies', 'agents'] as const).map((tab) => (
               <button key={tab} onClick={() => setActiveTab(tab)}
-                className={`px-4 py-2 rounded-xl text-xs font-medium capitalize transition-all ${activeTab === tab ? 'bg-gradient-primary text-white shadow-glow-blue' : 'bg-surface-elevated text-gray-400 hover:text-white border border-surface-border'}`}>
+                className={`px-4 py-2 rounded-xl text-xs font-medium capitalize transition-all ${activeTab === tab ? 'bg-gradient-primary text-white shadow-glow-blue' : 'bg-surface-elevated text-brand-grey hover:text-brand-dark border border-surface-border'}`}>
                 {tab === 'overview' ? 'Transaction Overview' : tab === 'channels' ? 'Channel Analytics' : tab === 'customers' ? 'Customer Summary' : tab === 'anomalies' ? 'Anomaly Detection' : 'Agent Performance'}
               </button>
             ))}
@@ -223,8 +223,8 @@ export default function SmartDashboardPage() {
             <div className="space-y-4">
               <div className="grid grid-cols-1 xl:grid-cols-3 gap-4">
                 <div className="xl:col-span-2 bg-surface-card border border-surface-border rounded-2xl p-5">
-                  <h3 className="text-sm font-semibold text-white mb-1">Daily Transaction Volume — 7 Days</h3>
-                  <p className="text-xs text-gray-500 mb-4">All channels: Web Banking, Mobile App, POS, ATM, USSD, Mobile Money, Branch</p>
+                  <h3 className="text-sm font-semibold text-brand-dark mb-1">Daily Transaction Volume — 7 Days</h3>
+                  <p className="text-xs text-brand-grey mb-4">All channels: Web Banking, Mobile App, POS, ATM, USSD, Mobile Money, Branch</p>
                   <ResponsiveContainer width="100%" height={200}>
                     <AreaChart data={DAILY_TRANSACTION_TREND}>
                       <defs>
@@ -247,8 +247,8 @@ export default function SmartDashboardPage() {
                   </ResponsiveContainer>
                 </div>
                 <div className="bg-surface-card border border-surface-border rounded-2xl p-5">
-                  <h3 className="text-sm font-semibold text-white mb-1">Risk Distribution</h3>
-                  <p className="text-xs text-gray-500 mb-4">Customer portfolio risk profile</p>
+                  <h3 className="text-sm font-semibold text-brand-dark mb-1">Risk Distribution</h3>
+                  <p className="text-xs text-brand-grey mb-4">Customer portfolio risk profile</p>
                   <ResponsiveContainer width="100%" height={160}>
                     <PieChart>
                       <Pie data={riskDistribution} cx="50%" cy="50%" innerRadius={45} outerRadius={70} dataKey="value">
@@ -262,9 +262,9 @@ export default function SmartDashboardPage() {
                       <div key={r.name} className="flex items-center justify-between text-xs">
                         <div className="flex items-center gap-1.5">
                           <div className="w-2 h-2 rounded-full" style={{ background: r.color }} />
-                          <span className="text-gray-400">{r.name}</span>
+                          <span className="text-brand-grey">{r.name}</span>
                         </div>
-                        <span className="text-white font-medium">{r.value}%</span>
+                        <span className="text-brand-dark font-medium">{r.value}%</span>
                       </div>
                     ))}
                   </div>
@@ -273,16 +273,16 @@ export default function SmartDashboardPage() {
 
               {/* Spending Categories */}
               <div className="bg-surface-card border border-surface-border rounded-2xl p-5">
-                <h3 className="text-sm font-semibold text-white mb-4">Spending Category Analysis — All Customers</h3>
+                <h3 className="text-sm font-semibold text-brand-dark mb-4">Spending Category Analysis — All Customers</h3>
                 <div className="space-y-3">
                   {CATEGORY_SPEND_BREAKDOWN.map((cat) => (
                     <div key={cat.name} className="flex items-center gap-3">
-                      <span className="text-xs text-gray-400 w-32 flex-shrink-0">{cat.name}</span>
+                      <span className="text-xs text-brand-grey w-32 flex-shrink-0">{cat.name}</span>
                       <div className="flex-1 bg-surface-elevated rounded-full h-2">
                         <div className="h-2 rounded-full" style={{ width: `${cat.value}%`, backgroundColor: cat.color }}></div>
                       </div>
-                      <span className="text-xs font-mono text-white w-8 text-right">{cat.value}%</span>
-                      <span className="text-xs text-gray-500 w-28 text-right">{fmtNGN(cat.totalNGN)}</span>
+                      <span className="text-xs font-mono text-brand-dark w-8 text-right">{cat.value}%</span>
+                      <span className="text-xs text-brand-grey w-28 text-right">{fmtNGN(cat.totalNGN)}</span>
                     </div>
                   ))}
                 </div>
@@ -293,7 +293,7 @@ export default function SmartDashboardPage() {
           {activeTab === 'channels' && (
             <div className="space-y-4">
               <div className="bg-surface-card border border-surface-border rounded-2xl p-5">
-                <h3 className="text-sm font-semibold text-white mb-4">Transaction Volume by Channel</h3>
+                <h3 className="text-sm font-semibold text-brand-dark mb-4">Transaction Volume by Channel</h3>
                 <ResponsiveContainer width="100%" height={220}>
                   <BarChart data={CHANNEL_TRANSACTION_VOLUME}>
                     <CartesianGrid strokeDasharray="3 3" stroke="#1E2D45" />
@@ -306,7 +306,7 @@ export default function SmartDashboardPage() {
               </div>
               <div className="bg-surface-card border border-surface-border rounded-2xl overflow-hidden">
                 <div className="px-5 py-4 border-b border-surface-border">
-                  <h3 className="text-sm font-semibold text-white">Channel Performance Summary</h3>
+                  <h3 className="text-sm font-semibold text-brand-dark">Channel Performance Summary</h3>
                 </div>
                 <div className="overflow-x-auto">
                   <table className="w-full">
@@ -320,9 +320,9 @@ export default function SmartDashboardPage() {
                     <tbody className="divide-y divide-surface-border">
                       {CHANNEL_TRANSACTION_VOLUME.map(ch => (
                         <tr key={ch.channel} className="hover:bg-surface-elevated transition-colors">
-                          <td className="px-4 py-3 text-xs font-medium text-white">{ch.channel}</td>
-                          <td className="px-4 py-3 text-xs text-gray-400">{ch.count.toLocaleString()}</td>
-                          <td className="px-4 py-3 text-xs text-gray-400">{fmtNGN(ch.volume)}</td>
+                          <td className="px-4 py-3 text-xs font-medium text-brand-dark">{ch.channel}</td>
+                          <td className="px-4 py-3 text-xs text-brand-grey">{ch.count.toLocaleString()}</td>
+                          <td className="px-4 py-3 text-xs text-brand-grey">{fmtNGN(ch.volume)}</td>
                           <td className="px-4 py-3">
                             <span className={`text-xs font-medium ${ch.fraudRate > 1.5 ? 'text-accent-red' : ch.fraudRate > 1.0 ? 'text-accent-amber' : 'text-accent-green'}`}>{ch.fraudRate}%</span>
                           </td>
@@ -339,8 +339,8 @@ export default function SmartDashboardPage() {
           {activeTab === 'customers' && (
             <div className="bg-surface-card border border-surface-border rounded-2xl overflow-hidden">
               <div className="px-5 py-4 border-b border-surface-border">
-                <h3 className="text-sm font-semibold text-white">Customer Summary — All Channels</h3>
-                <p className="text-xs text-gray-500 mt-0.5">{DEMO_CUSTOMERS.length} customers · {totalTransactions} transactions · {fmtNGN(totalVolume)} total volume</p>
+                <h3 className="text-sm font-semibold text-brand-dark">Customer Summary — All Channels</h3>
+                <p className="text-xs text-brand-grey mt-0.5">{DEMO_CUSTOMERS.length} customers · {totalTransactions} transactions · {fmtNGN(totalVolume)} total volume</p>
               </div>
               <div className="overflow-x-auto">
                 <table className="w-full">
@@ -360,23 +360,23 @@ export default function SmartDashboardPage() {
                       return (
                         <tr key={cust.id} className="hover:bg-surface-elevated transition-colors">
                           <td className="px-4 py-3">
-                            <div className="text-xs text-white font-medium">{cust.name}</div>
-                            <div className="text-xs text-gray-500">{cust.id}</div>
+                            <div className="text-xs text-brand-dark font-medium">{cust.name}</div>
+                            <div className="text-xs text-brand-grey">{cust.id}</div>
                           </td>
                           <td className="px-4 py-3"><span className="text-xs bg-primary/10 text-primary border border-primary/20 px-2 py-0.5 rounded-lg">{cust.segment}</span></td>
-                          <td className="px-4 py-3 text-xs font-mono text-white">{cust.creditScore}</td>
+                          <td className="px-4 py-3 text-xs font-mono text-brand-dark">{cust.creditScore}</td>
                           <td className="px-4 py-3">
                             <span className={`text-xs font-medium ${cust.riskTier === 'Low' ? 'text-accent-green' : cust.riskTier === 'Medium' ? 'text-accent-amber' : 'text-accent-red'}`}>{cust.riskTier}</span>
                           </td>
-                          <td className="px-4 py-3 text-xs text-gray-400">{txns.length}</td>
+                          <td className="px-4 py-3 text-xs text-brand-grey">{txns.length}</td>
                           <td className="px-4 py-3">
                             {fraudTxns > 0 ? <span className="text-xs text-accent-red font-medium">{fraudTxns} ⚠</span> : <span className="text-xs text-gray-600">—</span>}
                           </td>
                           <td className="px-4 py-3">
                             {amlTxns > 0 ? <span className="text-xs text-purple-400 font-medium">{amlTxns} 🔍</span> : <span className="text-xs text-gray-600">—</span>}
                           </td>
-                          <td className="px-4 py-3 text-xs text-gray-400">{loans}</td>
-                          <td className="px-4 py-3 text-xs text-gray-400">{cust.location}</td>
+                          <td className="px-4 py-3 text-xs text-brand-grey">{loans}</td>
+                          <td className="px-4 py-3 text-xs text-brand-grey">{cust.location}</td>
                         </tr>
                       );
                     })}
@@ -389,8 +389,8 @@ export default function SmartDashboardPage() {
           {activeTab === 'anomalies' && (
             <div className="space-y-4">
               <div className="bg-surface-card border border-surface-border rounded-2xl p-5">
-                <h3 className="text-sm font-semibold text-white mb-1">Anomaly Detection — Weekly Pattern</h3>
-                <p className="text-xs text-gray-500 mb-4">Normal vs anomalous transaction patterns</p>
+                <h3 className="text-sm font-semibold text-brand-dark mb-1">Anomaly Detection — Weekly Pattern</h3>
+                <p className="text-xs text-brand-grey mb-4">Normal vs anomalous transaction patterns</p>
                 <ResponsiveContainer width="100%" height={220}>
                   <BarChart data={anomalyData}>
                     <CartesianGrid strokeDasharray="3 3" stroke="#1E2D45" />
@@ -404,7 +404,7 @@ export default function SmartDashboardPage() {
                 </ResponsiveContainer>
               </div>
               <div className="bg-surface-card border border-surface-border rounded-2xl p-5">
-                <h3 className="text-sm font-semibold text-white mb-4">Active Anomalies — From Banking Channels</h3>
+                <h3 className="text-sm font-semibold text-brand-dark mb-4">Active Anomalies — From Banking Channels</h3>
                 <div className="space-y-3">
                   {[
                     { id: 'TXN-10004', type: 'Unusual ATM Time', customer: 'Adaeze Okonkwo', detail: 'ATM withdrawal ₦100,000 at 2:22 AM', risk: 87, channel: 'ATM', status: 'review' },
@@ -416,10 +416,10 @@ export default function SmartDashboardPage() {
                       <div className="flex-1">
                         <div className="flex items-center gap-2 mb-1">
                           <span className="text-xs font-mono text-primary">{anomaly.id}</span>
-                          <span className="text-xs text-white font-medium">{anomaly.type}</span>
+                          <span className="text-xs text-brand-dark font-medium">{anomaly.type}</span>
                         </div>
-                        <p className="text-xs text-gray-400">{anomaly.customer} · {anomaly.channel}</p>
-                        <p className="text-xs text-gray-500 mt-0.5">{anomaly.detail}</p>
+                        <p className="text-xs text-brand-grey">{anomaly.customer} · {anomaly.channel}</p>
+                        <p className="text-xs text-brand-grey mt-0.5">{anomaly.detail}</p>
                       </div>
                       <div className="text-right flex-shrink-0 ml-4">
                         <div className="text-xs font-bold text-accent-red">Risk: {anomaly.risk}/100</div>
@@ -435,17 +435,17 @@ export default function SmartDashboardPage() {
           {activeTab === 'agents' && (
             <div className="space-y-4">
               <div className="bg-surface-card border border-surface-border rounded-2xl p-5">
-                <h3 className="text-sm font-semibold text-white mb-4">Agent Performance — All 9 AI Agents</h3>
+                <h3 className="text-sm font-semibold text-brand-dark mb-4">Agent Performance — All 9 AI Agents</h3>
                 <div className="space-y-3">
                   {agentPerformance.map((agent) => (
                     <div key={agent.name} className="flex items-center gap-3">
                       <div className="w-2 h-2 rounded-full bg-accent-green flex-shrink-0"></div>
-                      <span className="text-xs text-gray-400 w-36 flex-shrink-0">{agent.name}</span>
+                      <span className="text-xs text-brand-grey w-36 flex-shrink-0">{agent.name}</span>
                       <div className="flex-1 bg-surface-elevated rounded-full h-2">
                         <div className="h-2 rounded-full" style={{ width: `${agent.uptime}%`, backgroundColor: agent.color }}></div>
                       </div>
-                      <span className="text-xs font-mono text-white w-12 text-right">{agent.uptime}%</span>
-                      <span className="text-xs text-gray-500 w-24 text-right">{agent.requests.toLocaleString()} reqs</span>
+                      <span className="text-xs font-mono text-brand-dark w-12 text-right">{agent.uptime}%</span>
+                      <span className="text-xs text-brand-grey w-24 text-right">{agent.requests.toLocaleString()} reqs</span>
                     </div>
                   ))}
                 </div>

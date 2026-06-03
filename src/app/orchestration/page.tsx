@@ -180,8 +180,8 @@ export default function OrchestrationPage() {
             ].map((k) => (
               <div key={k.label} className="bg-surface-card border border-surface-border rounded-2xl p-4">
                 <div className={`text-2xl font-bold ${k.color} mb-1`}>{k.value}</div>
-                <div className="text-sm font-medium text-white">{k.label}</div>
-                <div className="text-xs text-gray-500 mt-0.5">{k.sub}</div>
+                <div className="text-sm font-medium text-brand-dark">{k.label}</div>
+                <div className="text-xs text-brand-grey mt-0.5">{k.sub}</div>
               </div>
             ))}
           </div>
@@ -195,7 +195,7 @@ export default function OrchestrationPage() {
                 className={`px-4 py-2 rounded-xl text-xs font-medium capitalize transition-all ${
                   activeTab === tab
                     ? 'bg-gradient-primary text-white shadow-glow-blue'
-                    : 'bg-surface-elevated text-gray-400 hover:text-white border border-surface-border'
+                    : 'bg-surface-elevated text-brand-grey hover:text-brand-dark border border-surface-border'
                 }`}
               >
                 {tab === 'topology' ? '🔗 Agent Topology' : tab === 'workflows' ? '⚙ Workflow Queue' : tab === 'messages' ? '📡 Message Bus' : '❤ Health Monitor'}
@@ -210,11 +210,11 @@ export default function OrchestrationPage() {
               <div className="bg-surface-card border border-surface-border rounded-2xl p-5">
                 <div className="flex flex-wrap items-end gap-4 mb-4">
                   <div className="flex-1 min-w-64">
-                    <label className="block text-xs font-medium text-gray-400 mb-1.5">Workflow Type</label>
+                    <label className="block text-xs font-medium text-brand-grey mb-1.5">Workflow Type</label>
                     <select
                       value={taskType}
                       onChange={(e) => setTaskType(e.target.value)}
-                      className="w-full bg-surface-elevated border border-surface-border rounded-xl px-3 py-2.5 text-sm text-white outline-none focus:border-primary/50"
+                      className="w-full bg-surface-elevated border border-surface-border rounded-xl px-3 py-2.5 text-sm text-brand-dark outline-none focus:border-primary/50"
                     >
                       {['Loan Application Processing', 'Fraud + Compliance Escalation', 'Customer Onboarding', 'Portfolio Risk Assessment', 'Regulatory Report Generation', 'Personalized Campaign Trigger', 'Cross-border Payment Routing', 'KYC/AML Verification'].map(t => (
                         <option key={t}>{t}</option>
@@ -298,24 +298,24 @@ export default function OrchestrationPage() {
                       </div>
                       <span className={`text-xs px-2 py-0.5 rounded-full border capitalize ${agentStatusStyle[agent.status]}`}>{agent.status}</span>
                     </div>
-                    <div className="text-xs font-semibold text-white mb-1">{agent.name}</div>
-                    <div className="text-xs text-gray-500 mb-2">{agent.version}</div>
+                    <div className="text-xs font-semibold text-brand-dark mb-1">{agent.name}</div>
+                    <div className="text-xs text-brand-grey mb-2">{agent.version}</div>
                     <div className="space-y-1.5">
                       <div className="flex justify-between">
-                        <span className="text-xs text-gray-600">Health</span>
+                        <span className="text-xs text-brand-grey">Health</span>
                         <span className="text-xs font-mono text-accent-green">{agent.health}%</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-xs text-gray-600">Latency</span>
-                        <span className="text-xs font-mono text-white">{agent.latency}</span>
+                        <span className="text-xs text-brand-grey">Latency</span>
+                        <span className="text-xs font-mono text-brand-dark">{agent.latency}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-xs text-gray-600">Req/min</span>
+                        <span className="text-xs text-brand-grey">Req/min</span>
                         <span className="text-xs font-mono text-primary">{agent.requestsPerMin.toLocaleString()}</span>
                       </div>
                       <div className="flex justify-between">
-                        <span className="text-xs text-gray-600">Last ping</span>
-                        <span className="text-xs text-gray-500">{agent.lastPing}</span>
+                        <span className="text-xs text-brand-grey">Last ping</span>
+                        <span className="text-xs text-brand-grey">{agent.lastPing}</span>
                       </div>
                     </div>
                     <div className="mt-3 w-full bg-surface-elevated rounded-full h-1">
@@ -350,13 +350,13 @@ export default function OrchestrationPage() {
                   <div key={feature.title} className={`bg-surface-card border ${feature.color} rounded-2xl p-5`}>
                     <div className="flex items-center gap-2 mb-3">
                       <span className="text-lg">{feature.icon}</span>
-                      <h3 className="text-sm font-semibold text-white">{feature.title}</h3>
+                      <h3 className="text-sm font-semibold text-brand-dark">{feature.title}</h3>
                     </div>
                     <ul className="space-y-2">
                       {feature.items.map((item, i) => (
                         <li key={i} className="flex items-start gap-2">
                           <div className="w-1.5 h-1.5 rounded-full bg-primary mt-1.5 flex-shrink-0"></div>
-                          <span className="text-xs text-gray-400">{item}</span>
+                          <span className="text-xs text-brand-grey">{item}</span>
                         </li>
                       ))}
                     </ul>
@@ -378,14 +378,14 @@ export default function OrchestrationPage() {
                 ].map((s) => (
                   <div key={s.label} className="bg-surface-card border border-surface-border rounded-2xl p-4 text-center">
                     <div className={`text-xl font-bold ${s.color}`}>{s.value}</div>
-                    <div className="text-xs text-gray-500 mt-1">{s.label}</div>
+                    <div className="text-xs text-brand-grey mt-1">{s.label}</div>
                   </div>
                 ))}
               </div>
 
               <div className="bg-surface-card border border-surface-border rounded-2xl overflow-hidden">
                 <div className="px-5 py-4 border-b border-surface-border flex items-center justify-between">
-                  <h3 className="text-sm font-semibold text-white">Recent Workflow Tasks</h3>
+                  <h3 className="text-sm font-semibold text-brand-dark">Recent Workflow Tasks</h3>
                   <span className="text-xs text-accent-amber bg-accent-amber/10 px-2 py-1 rounded-lg border border-accent-amber/20">1 Processing</span>
                 </div>
                 <div className="divide-y divide-surface-border">
@@ -398,11 +398,11 @@ export default function OrchestrationPage() {
                             <span className={`text-xs px-2 py-0.5 rounded-full border capitalize ${workflowStatusStyle[wf.status]}`}>{wf.status}</span>
                             <span className="text-xs text-gray-600">Priority: <span className={`font-semibold ${wf.priority >= 9 ? 'text-accent-red' : wf.priority >= 7 ? 'text-accent-amber' : 'text-gray-400'}`}>{wf.priority}/10</span></span>
                           </div>
-                          <div className="text-sm font-medium text-white mt-1">{wf.type}</div>
+                          <div className="text-sm font-medium text-brand-dark mt-1">{wf.type}</div>
                         </div>
                         <div className="text-right flex-shrink-0">
-                          <div className="text-xs text-gray-500">{wf.startedAt}</div>
-                          <div className="text-xs text-gray-600 mt-0.5">Duration: {wf.duration}</div>
+                          <div className="text-xs text-brand-grey">{wf.startedAt}</div>
+                          <div className="text-xs text-brand-grey mt-0.5">Duration: {wf.duration}</div>
                         </div>
                       </div>
                       <div className="flex flex-wrap gap-1 mb-2">
@@ -410,7 +410,7 @@ export default function OrchestrationPage() {
                           <span key={a} className="text-xs bg-surface-elevated border border-surface-border text-gray-400 px-2 py-0.5 rounded-full">{a.replace('_', ' ')}</span>
                         ))}
                       </div>
-                      <p className="text-xs text-gray-400 italic">{wf.decision}</p>
+                      <p className="text-xs text-brand-grey italic">{wf.decision}</p>
                     </div>
                   ))}
                 </div>
@@ -418,7 +418,7 @@ export default function OrchestrationPage() {
 
               {/* Throughput Chart */}
               <div className="bg-surface-card border border-surface-border rounded-2xl p-5">
-                <h3 className="text-sm font-semibold text-white mb-4">Workflow Throughput — Today</h3>
+                <h3 className="text-sm font-semibold text-brand-dark mb-4">Workflow Throughput — Today</h3>
                 <ResponsiveContainer width="100%" height={200}>
                   <BarChart data={throughputData}>
                     <CartesianGrid strokeDasharray="3 3" stroke="#1E2D45" />
@@ -445,33 +445,33 @@ export default function OrchestrationPage() {
                 ].map((m) => (
                   <div key={m.type} className="bg-surface-card border border-surface-border rounded-2xl p-4 text-center">
                     <div className={`text-xl font-bold ${m.color}`}>{m.count.toLocaleString()}</div>
-                    <div className="text-xs text-gray-500 mt-1">{m.label}</div>
+                    <div className="text-xs text-brand-grey mt-1">{m.label}</div>
                   </div>
                 ))}
               </div>
 
               <div className="bg-surface-card border border-surface-border rounded-2xl overflow-hidden">
                 <div className="px-5 py-4 border-b border-surface-border flex items-center justify-between">
-                  <h3 className="text-sm font-semibold text-white">Inter-Agent Message Bus</h3>
+                  <h3 className="text-sm font-semibold text-brand-dark">Inter-Agent Message Bus</h3>
                   <div className="flex items-center gap-1.5">
                     <div className="w-2 h-2 rounded-full bg-accent-green animate-pulse-slow"></div>
-                    <span className="text-xs text-gray-500">Live stream</span>
+                    <span className="text-xs text-brand-grey">Live stream</span>
                   </div>
                 </div>
                 <div className="divide-y divide-surface-border">
                   {agentMessages.map((msg) => (
                     <div key={msg.id} className="px-5 py-4">
                       <div className="flex items-center gap-3 mb-2 flex-wrap">
-                        <span className="text-xs font-medium text-white">{msg.from}</span>
+                        <span className="text-xs font-medium text-brand-dark">{msg.from}</span>
                         <svg className="w-3 h-3 text-gray-600 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                         </svg>
-                        <span className="text-xs font-medium text-white">{msg.to}</span>
+                        <span className="text-xs font-medium text-brand-dark">{msg.to}</span>
                         <span className={`text-xs px-2 py-0.5 rounded-full border capitalize ${msgTypeStyle[msg.type]}`}>{msg.type.replace('_', ' ')}</span>
-                        <span className="ml-auto text-xs text-gray-600">{msg.timestamp}</span>
+                        <span className="ml-auto text-xs text-brand-grey">{msg.timestamp}</span>
                         <span className="text-xs text-accent-cyan font-mono">{msg.latency}</span>
                       </div>
-                      <p className="text-xs text-gray-400">{msg.payload}</p>
+                      <p className="text-xs text-brand-grey">{msg.payload}</p>
                     </div>
                   ))}
                 </div>
@@ -480,7 +480,7 @@ export default function OrchestrationPage() {
               {/* Orchestration Benefits */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="bg-surface-card border border-surface-border rounded-2xl p-5">
-                  <h3 className="text-sm font-semibold text-white mb-4">Orchestration Benefits</h3>
+                  <h3 className="text-sm font-semibold text-brand-dark mb-4">Orchestration Benefits</h3>
                   <div className="space-y-3">
                     {[
                       { benefit: 'Seamless agent integration', metric: '100% API compatibility', icon: '🔗' },
@@ -493,15 +493,15 @@ export default function OrchestrationPage() {
                       <div key={b.benefit} className="flex items-center gap-3 py-2 border-b border-surface-border last:border-0">
                         <span className="text-base">{b.icon}</span>
                         <div className="flex-1">
-                          <div className="text-xs font-medium text-white">{b.benefit}</div>
-                          <div className="text-xs text-gray-500">{b.metric}</div>
+                          <div className="text-xs font-medium text-brand-dark">{b.benefit}</div>
+                          <div className="text-xs text-brand-grey">{b.metric}</div>
                         </div>
                       </div>
                     ))}
                   </div>
                 </div>
                 <div className="bg-surface-card border border-surface-border rounded-2xl p-5">
-                  <h3 className="text-sm font-semibold text-white mb-4">Fallback & Degradation</h3>
+                  <h3 className="text-sm font-semibold text-brand-dark mb-4">Fallback & Degradation</h3>
                   <div className="space-y-3">
                     {[
                       { scenario: 'Agent timeout', action: 'Auto-retry with exponential backoff (3x)', status: 'active' },
@@ -514,8 +514,8 @@ export default function OrchestrationPage() {
                       <div key={f.scenario} className="flex items-start gap-3 py-2 border-b border-surface-border last:border-0">
                         <div className={`w-1.5 h-1.5 rounded-full mt-1.5 flex-shrink-0 ${f.status === 'active' ? 'bg-accent-green' : 'bg-accent-amber'}`}></div>
                         <div>
-                          <div className="text-xs font-medium text-white">{f.scenario}</div>
-                          <div className="text-xs text-gray-500">{f.action}</div>
+                          <div className="text-xs font-medium text-brand-dark">{f.scenario}</div>
+                          <div className="text-xs text-brand-grey">{f.action}</div>
                         </div>
                       </div>
                     ))}
@@ -529,7 +529,7 @@ export default function OrchestrationPage() {
           {activeTab === 'health' && (
             <div className="space-y-4">
               <div className="bg-surface-card border border-surface-border rounded-2xl p-5">
-                <h3 className="text-sm font-semibold text-white mb-4">Agent Health History — Today</h3>
+                <h3 className="text-sm font-semibold text-brand-dark mb-4">Agent Health History — Today</h3>
                 <ResponsiveContainer width="100%" height={240}>
                   <LineChart data={healthHistory}>
                     <CartesianGrid strokeDasharray="3 3" stroke="#1E2D45" />
@@ -546,7 +546,7 @@ export default function OrchestrationPage() {
 
               <div className="bg-surface-card border border-surface-border rounded-2xl overflow-hidden">
                 <div className="px-5 py-4 border-b border-surface-border">
-                  <h3 className="text-sm font-semibold text-white">Agent Health Status</h3>
+                  <h3 className="text-sm font-semibold text-brand-dark">Agent Health Status</h3>
                 </div>
                 <div className="overflow-x-auto">
                   <table className="w-full">
@@ -563,7 +563,7 @@ export default function OrchestrationPage() {
                           <td className="px-4 py-3">
                             <div className="flex items-center gap-2">
                               <div className="w-2 h-2 rounded-full" style={{ backgroundColor: agent.color }}></div>
-                              <span className="text-xs font-medium text-white whitespace-nowrap">{agent.name}</span>
+                              <span className="text-xs font-medium text-brand-dark whitespace-nowrap">{agent.name}</span>
                             </div>
                           </td>
                           <td className="px-4 py-3">
@@ -574,13 +574,13 @@ export default function OrchestrationPage() {
                               <div className="w-16 bg-surface-border rounded-full h-1.5">
                                 <div className="h-1.5 rounded-full" style={{ width: `${agent.health}%`, backgroundColor: agent.health >= 99 ? '#00C896' : '#FFB020' }}></div>
                               </div>
-                              <span className="text-xs font-mono text-white">{agent.health}%</span>
+                              <span className="text-xs font-mono text-brand-dark">{agent.health}%</span>
                             </div>
                           </td>
-                          <td className="px-4 py-3 text-xs font-mono text-white">{agent.latency}</td>
+                          <td className="px-4 py-3 text-xs font-mono text-brand-dark">{agent.latency}</td>
                           <td className="px-4 py-3 text-xs font-mono text-primary">{agent.requestsPerMin.toLocaleString()}</td>
-                          <td className="px-4 py-3 text-xs text-gray-400 font-mono">{agent.version}</td>
-                          <td className="px-4 py-3 text-xs text-gray-500">{agent.lastPing}</td>
+                          <td className="px-4 py-3 text-xs text-brand-grey font-mono">{agent.version}</td>
+                          <td className="px-4 py-3 text-xs text-brand-grey">{agent.lastPing}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -591,7 +591,7 @@ export default function OrchestrationPage() {
               {/* SLA Metrics */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="bg-surface-card border border-surface-border rounded-2xl p-5">
-                  <h3 className="text-sm font-semibold text-white mb-4">SLA Performance</h3>
+                  <h3 className="text-sm font-semibold text-brand-dark mb-4">SLA Performance</h3>
                   <div className="space-y-3">
                     {[
                       { metric: 'System Uptime (30d)', value: 99.97, target: 99.9 },
@@ -601,7 +601,7 @@ export default function OrchestrationPage() {
                     ].map((s) => (
                       <div key={s.metric}>
                         <div className="flex justify-between mb-1">
-                          <span className="text-xs text-gray-400">{s.metric}</span>
+                          <span className="text-xs text-brand-grey">{s.metric}</span>
                           <span className={`text-xs font-semibold ${s.value >= s.target ? 'text-accent-green' : 'text-accent-red'}`}>{s.label || `${s.value}%`}</span>
                         </div>
                         <div className="w-full bg-surface-elevated rounded-full h-1.5">
@@ -612,7 +612,7 @@ export default function OrchestrationPage() {
                   </div>
                 </div>
                 <div className="bg-surface-card border border-surface-border rounded-2xl p-5">
-                  <h3 className="text-sm font-semibold text-white mb-4">Infrastructure</h3>
+                  <h3 className="text-sm font-semibold text-brand-dark mb-4">Infrastructure</h3>
                   <div className="space-y-3">
                     {[
                       { label: 'Deployment Model', value: 'On-premise / Private Cloud' },
@@ -625,8 +625,8 @@ export default function OrchestrationPage() {
                       { label: 'Audit', value: 'Immutable decision logs' },
                     ].map((item) => (
                       <div key={item.label} className="flex justify-between py-1.5 border-b border-surface-border last:border-0">
-                        <span className="text-xs text-gray-500">{item.label}</span>
-                        <span className="text-xs text-white text-right">{item.value}</span>
+                        <span className="text-xs text-brand-grey">{item.label}</span>
+                        <span className="text-xs text-brand-dark text-right">{item.value}</span>
                       </div>
                     ))}
                   </div>

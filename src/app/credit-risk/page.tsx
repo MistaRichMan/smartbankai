@@ -122,8 +122,8 @@ export default function CreditRiskPage() {
             ].map((kpi) => (
               <div key={kpi.label} className="bg-surface-card border border-surface-border rounded-2xl p-4">
                 <div className={`text-2xl font-bold ${kpi.color} mb-1`}>{kpi.value}</div>
-                <div className="text-sm font-medium text-white">{kpi.label}</div>
-                <div className="text-xs text-gray-500 mt-0.5">{kpi.sub}</div>
+                <div className="text-sm font-medium text-brand-dark">{kpi.label}</div>
+                <div className="text-xs text-brand-grey mt-0.5">{kpi.sub}</div>
               </div>
             ))}
           </div>
@@ -132,7 +132,7 @@ export default function CreditRiskPage() {
           <div className="flex gap-2 flex-wrap">
             {(['applications', 'analytics', 'customers', 'assess', 'model'] as const).map((tab) => (
               <button key={tab} onClick={() => setActiveTab(tab)}
-                className={`px-4 py-2 rounded-xl text-xs font-medium capitalize transition-all ${activeTab === tab ? 'bg-gradient-primary text-white shadow-glow-blue' : 'bg-surface-elevated text-gray-400 hover:text-white border border-surface-border'}`}>
+                className={`px-4 py-2 rounded-xl text-xs font-medium capitalize transition-all ${activeTab === tab ? 'bg-gradient-primary text-white shadow-glow-blue' : 'bg-surface-elevated text-brand-grey hover:text-brand-dark border border-surface-border'}`}>
                 {tab === 'applications' ? `Loan Applications (${DEMO_LOANS.length})` : tab === 'analytics' ? 'Portfolio Analytics' : tab === 'customers' ? 'Customer Profiles' : tab === 'assess' ? '🧮 Assess' : 'AI Model'}
               </button>
             ))}
@@ -142,8 +142,8 @@ export default function CreditRiskPage() {
             <div className="space-y-4">
               <div className="bg-surface-card border border-surface-border rounded-2xl overflow-hidden">
                 <div className="px-5 py-4 border-b border-surface-border flex items-center justify-between">
-                  <h3 className="text-sm font-semibold text-white">Loan Applications — From Web Banking & Mobile App</h3>
-                  <span className="text-xs text-gray-500">Sources: Web Banking Portal · Mobile Banking Super-App</span>
+                  <h3 className="text-sm font-semibold text-brand-dark">Loan Applications — From Web Banking & Mobile App</h3>
+                  <span className="text-xs text-brand-grey">Sources: Web Banking Portal · Mobile Banking Super-App</span>
                 </div>
                 <div className="overflow-x-auto">
                   <table className="w-full">
@@ -159,17 +159,17 @@ export default function CreditRiskPage() {
                         <tr key={loan.id} onClick={() => setSelectedLoan(loan)} className="hover:bg-surface-elevated transition-colors cursor-pointer">
                           <td className="px-4 py-3 text-xs font-mono text-primary">{loan.id}</td>
                           <td className="px-4 py-3">
-                            <div className="text-xs text-white font-medium">{loan.applicantName}</div>
-                            <div className="text-xs text-gray-500">{loan.customerId}</div>
+                            <div className="text-xs text-brand-dark font-medium">{loan.applicantName}</div>
+                            <div className="text-xs text-brand-grey">{loan.customerId}</div>
                           </td>
-                          <td className="px-4 py-3 text-xs text-gray-400">{loan.loanType}</td>
-                          <td className="px-4 py-3 text-xs font-medium text-white whitespace-nowrap">{fmtNGN(loan.amount)}</td>
+                          <td className="px-4 py-3 text-xs text-brand-grey">{loan.loanType}</td>
+                          <td className="px-4 py-3 text-xs font-medium text-brand-dark whitespace-nowrap">{fmtNGN(loan.amount)}</td>
                           <td className="px-4 py-3">
                             <div className="flex items-center gap-2">
                               <div className="w-12 bg-surface-border rounded-full h-1.5">
                                 <div className="h-1.5 rounded-full" style={{ width: `${(loan.creditScore / 900) * 100}%`, backgroundColor: loan.creditScore > 700 ? '#00C896' : loan.creditScore > 600 ? '#FFB020' : '#FF4D4D' }}></div>
                               </div>
-                              <span className="text-xs font-mono text-white">{loan.creditScore}</span>
+                              <span className="text-xs font-mono text-brand-dark">{loan.creditScore}</span>
                             </div>
                           </td>
                           <td className="px-4 py-3">
@@ -178,9 +178,9 @@ export default function CreditRiskPage() {
                           <td className="px-4 py-3">
                             <span className={`text-xs px-2 py-0.5 rounded-lg border capitalize ${statusConfig[loan.status]}`}>{loan.status}</span>
                           </td>
-                          <td className="px-4 py-3 text-xs text-gray-400 whitespace-nowrap">{loan.sector}</td>
-                          <td className="px-4 py-3 text-xs text-gray-400 whitespace-nowrap">{fmtNGN(loan.monthlyIncome)}/mo</td>
-                          <td className="px-4 py-3 text-xs text-gray-500 whitespace-nowrap">{fmtDate(loan.appliedAt)}</td>
+                          <td className="px-4 py-3 text-xs text-brand-grey whitespace-nowrap">{loan.sector}</td>
+                          <td className="px-4 py-3 text-xs text-brand-grey whitespace-nowrap">{fmtNGN(loan.monthlyIncome)}/mo</td>
+                          <td className="px-4 py-3 text-xs text-brand-grey whitespace-nowrap">{fmtDate(loan.appliedAt)}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -192,8 +192,8 @@ export default function CreditRiskPage() {
               {selectedLoan && (
                 <div className="bg-surface-card border border-surface-border rounded-2xl p-5">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-sm font-semibold text-white">Loan Detail — {selectedLoan.id}</h3>
-                    <button onClick={() => setSelectedLoan(null)} className="text-xs text-gray-500 hover:text-white">✕ Close</button>
+                    <h3 className="text-sm font-semibold text-brand-dark">Loan Detail — {selectedLoan.id}</h3>
+                    <button onClick={() => setSelectedLoan(null)} className="text-xs text-brand-grey hover:text-brand-dark">✕ Close</button>
                   </div>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
                     {[
@@ -207,14 +207,14 @@ export default function CreditRiskPage() {
                       { label: 'Monthly Payment', value: selectedLoan.monthlyPayment > 0 ? fmtNGN(selectedLoan.monthlyPayment) : 'N/A' },
                     ].map(item => (
                       <div key={item.label} className="bg-surface-elevated rounded-xl p-3">
-                        <p className="text-xs text-gray-500 mb-1">{item.label}</p>
-                        <p className="text-sm text-white font-medium">{item.value}</p>
+                        <p className="text-xs text-brand-grey mb-1">{item.label}</p>
+                        <p className="text-sm text-brand-dark font-medium">{item.value}</p>
                       </div>
                     ))}
                   </div>
                   <div className="bg-surface-elevated rounded-xl p-3 mb-4">
-                    <p className="text-xs text-gray-500 mb-1">Alternative Data Used</p>
-                    <p className="text-xs text-gray-300">{selectedLoan.alternativeData}</p>
+                    <p className="text-xs text-brand-grey mb-1">Alternative Data Used</p>
+                    <p className="text-xs text-brand-grey">{selectedLoan.alternativeData}</p>
                   </div>
                   <div className="flex gap-3">
                     {selectedLoan.status === 'review' && <>
@@ -233,7 +233,7 @@ export default function CreditRiskPage() {
             <div className="space-y-4">
               <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
                 <div className="bg-surface-card border border-surface-border rounded-2xl p-5">
-                  <h3 className="text-sm font-semibold text-white mb-4">Credit Score Distribution</h3>
+                  <h3 className="text-sm font-semibold text-brand-dark mb-4">Credit Score Distribution</h3>
                   <ResponsiveContainer width="100%" height={200}>
                     <BarChart data={scoreDistribution}>
                       <CartesianGrid strokeDasharray="3 3" stroke="#1E2D45" />
@@ -245,8 +245,8 @@ export default function CreditRiskPage() {
                   </ResponsiveContainer>
                 </div>
                 <div className="bg-surface-card border border-surface-border rounded-2xl p-5">
-                  <h3 className="text-sm font-semibold text-white mb-1">NPL Ratio Trend</h3>
-                  <p className="text-xs text-gray-500 mb-4">Non-Performing Loan ratio — 12 months</p>
+                  <h3 className="text-sm font-semibold text-brand-dark mb-1">NPL Ratio Trend</h3>
+                  <p className="text-xs text-brand-grey mb-4">Non-Performing Loan ratio — 12 months</p>
                   <ResponsiveContainer width="100%" height={200}>
                     <LineChart data={nplTrend}>
                       <CartesianGrid strokeDasharray="3 3" stroke="#1E2D45" />
@@ -259,7 +259,7 @@ export default function CreditRiskPage() {
                 </div>
               </div>
               <div className="bg-surface-card border border-surface-border rounded-2xl p-5">
-                <h3 className="text-sm font-semibold text-white mb-4">Credit Scoring Factors — Alternative Data Model</h3>
+                <h3 className="text-sm font-semibold text-brand-dark mb-4">Credit Scoring Factors — Alternative Data Model</h3>
                 <ResponsiveContainer width="100%" height={280}>
                   <RadarChart data={radarData}>
                     <PolarGrid stroke="#1E2D45" />
@@ -276,8 +276,8 @@ export default function CreditRiskPage() {
           {activeTab === 'customers' && (
             <div className="bg-surface-card border border-surface-border rounded-2xl overflow-hidden">
               <div className="px-5 py-4 border-b border-surface-border">
-                <h3 className="text-sm font-semibold text-white">Customer Credit Profiles — Across All Channels</h3>
-                <p className="text-xs text-gray-500 mt-0.5">Transaction history from Web Banking, Mobile App, and Mobile Money channels</p>
+                <h3 className="text-sm font-semibold text-brand-dark">Customer Credit Profiles — Across All Channels</h3>
+                <p className="text-xs text-brand-grey mt-0.5">Transaction history from Web Banking, Mobile App, and Mobile Money channels</p>
               </div>
               <div className="overflow-x-auto">
                 <table className="w-full">
@@ -294,8 +294,8 @@ export default function CreditRiskPage() {
                       return (
                         <tr key={cust.id} className="hover:bg-surface-elevated transition-colors">
                           <td className="px-4 py-3">
-                            <div className="text-xs text-white font-medium">{cust.name}</div>
-                            <div className="text-xs text-gray-500">{cust.id} · {cust.email}</div>
+                            <div className="text-xs text-brand-dark font-medium">{cust.name}</div>
+                            <div className="text-xs text-brand-grey">{cust.id} · {cust.email}</div>
                           </td>
                           <td className="px-4 py-3"><span className="text-xs bg-primary/10 text-primary border border-primary/20 px-2 py-0.5 rounded-lg">{cust.segment}</span></td>
                           <td className="px-4 py-3">
@@ -303,15 +303,15 @@ export default function CreditRiskPage() {
                               <div className="w-12 bg-surface-border rounded-full h-1.5">
                                 <div className="h-1.5 rounded-full" style={{ width: `${(cust.creditScore / 900) * 100}%`, backgroundColor: cust.creditScore > 700 ? '#00C896' : cust.creditScore > 600 ? '#FFB020' : '#FF4D4D' }}></div>
                               </div>
-                              <span className="text-xs font-mono text-white">{cust.creditScore}</span>
+                              <span className="text-xs font-mono text-brand-dark">{cust.creditScore}</span>
                             </div>
                           </td>
                           <td className="px-4 py-3"><span className={`text-xs px-2 py-0.5 rounded-lg border ${riskConfig[cust.riskTier]}`}>{cust.riskTier}</span></td>
                           <td className="px-4 py-3"><span className={`text-xs px-2 py-0.5 rounded-lg ${cust.kycStatus === 'verified' ? 'text-accent-green bg-accent-green/10' : cust.kycStatus === 'pending' ? 'text-accent-amber bg-accent-amber/10' : 'text-accent-red bg-accent-red/10'}`}>{cust.kycStatus}</span></td>
-                          <td className="px-4 py-3 text-xs text-gray-400 whitespace-nowrap">{fmtNGN(cust.monthlyIncome)}/mo</td>
-                          <td className="px-4 py-3 text-xs text-gray-400">{txCount} txns</td>
-                          <td className="px-4 py-3 text-xs text-gray-400">{cust.location}</td>
-                          <td className="px-4 py-3 text-xs text-gray-500">{new Date(cust.since).getFullYear()}</td>
+                          <td className="px-4 py-3 text-xs text-brand-grey whitespace-nowrap">{fmtNGN(cust.monthlyIncome)}/mo</td>
+                          <td className="px-4 py-3 text-xs text-brand-grey">{txCount} txns</td>
+                          <td className="px-4 py-3 text-xs text-brand-grey">{cust.location}</td>
+                          <td className="px-4 py-3 text-xs text-brand-grey">{new Date(cust.since).getFullYear()}</td>
                         </tr>
                       );
                     })}
@@ -324,8 +324,8 @@ export default function CreditRiskPage() {
           {activeTab === 'assess' && (
             <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
               <div className="bg-surface-card border border-surface-border rounded-2xl p-5">
-                <h3 className="text-sm font-semibold text-white mb-1">Credit Risk Assessment</h3>
-                <p className="text-xs text-gray-500 mb-4">Pre-filled with LOAN-4421 from Web Banking Portal</p>
+                <h3 className="text-sm font-semibold text-brand-dark mb-1">Credit Risk Assessment</h3>
+                <p className="text-xs text-brand-grey mb-4">Pre-filled with LOAN-4421 from Web Banking Portal</p>
                 <div className="space-y-3">
                   {[
                     { key: 'applicationRef', label: 'Application Reference', type: 'text' },
@@ -336,24 +336,24 @@ export default function CreditRiskPage() {
                     { key: 'existingDebts', label: 'Existing Debts (NGN)', type: 'number' },
                   ].map((field) => (
                     <div key={field.key}>
-                      <label className="block text-xs font-medium text-gray-400 mb-1">{field.label}</label>
+                      <label className="block text-xs font-medium text-brand-grey mb-1">{field.label}</label>
                       <input type={field.type} value={assessForm[field.key as keyof typeof assessForm]}
                         onChange={(e) => setAssessForm(prev => ({ ...prev, [field.key]: e.target.value }))}
-                        className="w-full bg-surface-elevated border border-surface-border rounded-xl px-3 py-2 text-sm text-white outline-none focus:border-primary/50" />
+                        className="w-full bg-surface-elevated border border-surface-border rounded-xl px-3 py-2 text-sm text-brand-dark outline-none focus:border-primary/50" />
                     </div>
                   ))}
                   <div>
-                    <label className="block text-xs font-medium text-gray-400 mb-1">Customer Type</label>
+                    <label className="block text-xs font-medium text-brand-grey mb-1">Customer Type</label>
                     <select value={assessForm.customerType} onChange={(e) => setAssessForm(prev => ({ ...prev, customerType: e.target.value as 'individual' | 'msme' }))}
-                      className="w-full bg-surface-elevated border border-surface-border rounded-xl px-3 py-2 text-sm text-white outline-none focus:border-primary/50">
+                      className="w-full bg-surface-elevated border border-surface-border rounded-xl px-3 py-2 text-sm text-brand-dark outline-none focus:border-primary/50">
                       <option value="individual">Individual</option>
                       <option value="msme">MSME</option>
                     </select>
                   </div>
                   <div>
-                    <label className="block text-xs font-medium text-gray-400 mb-1">Alternative Data</label>
+                    <label className="block text-xs font-medium text-brand-grey mb-1">Alternative Data</label>
                     <textarea value={assessForm.alternativeData} onChange={(e) => setAssessForm(prev => ({ ...prev, alternativeData: e.target.value }))}
-                      rows={3} className="w-full bg-surface-elevated border border-surface-border rounded-xl px-3 py-2 text-sm text-white outline-none focus:border-primary/50 resize-none" />
+                      rows={3} className="w-full bg-surface-elevated border border-surface-border rounded-xl px-3 py-2 text-sm text-brand-dark outline-none focus:border-primary/50 resize-none" />
                   </div>
                   <button onClick={runCreditAssessment} disabled={isAssessing}
                     className="w-full flex items-center justify-center gap-2 py-2.5 bg-gradient-primary text-white text-sm font-medium rounded-xl hover:opacity-90 transition-opacity disabled:opacity-50">
@@ -363,7 +363,7 @@ export default function CreditRiskPage() {
               </div>
 
               <div className="bg-surface-card border border-surface-border rounded-2xl p-5">
-                <h3 className="text-sm font-semibold text-white mb-4">AI Credit Assessment</h3>
+                <h3 className="text-sm font-semibold text-brand-dark mb-4">AI Credit Assessment</h3>
                 {assessError && <div className="px-4 py-3 bg-accent-red/10 border border-accent-red/20 rounded-xl text-sm text-accent-red mb-4">{assessError}</div>}
                 {creditResult ? (
                   <div className="space-y-4">
@@ -423,7 +423,7 @@ export default function CreditRiskPage() {
           {activeTab === 'model' && (
             <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
               <div className="bg-surface-card border border-surface-border rounded-2xl p-5">
-                <h3 className="text-sm font-semibold text-white mb-4">Alternative Data Sources — African Market</h3>
+                <h3 className="text-sm font-semibold text-brand-dark mb-4">Alternative Data Sources — African Market</h3>
                 <div className="space-y-3">
                   {[
                     { source: 'Mobile Money Transactions', weight: 94, status: 'active', description: 'MTN MoMo, Airtel Money, M-Pesa patterns' },
@@ -437,20 +437,20 @@ export default function CreditRiskPage() {
                     <div key={s.source} className="flex items-center gap-3">
                       <div className="flex-1">
                         <div className="flex items-center justify-between mb-1">
-                          <span className="text-xs text-white font-medium">{s.source}</span>
-                          <span className="text-xs text-gray-500">{s.weight}% weight</span>
+                          <span className="text-xs text-brand-dark font-medium">{s.source}</span>
+                          <span className="text-xs text-brand-grey">{s.weight}% weight</span>
                         </div>
                         <div className="w-full bg-surface-elevated rounded-full h-1.5">
                           <div className="h-1.5 rounded-full bg-primary" style={{ width: `${s.weight}%` }}></div>
                         </div>
-                        <p className="text-xs text-gray-600 mt-0.5">{s.description}</p>
+                        <p className="text-xs text-brand-grey mt-0.5">{s.description}</p>
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
               <div className="bg-surface-card border border-surface-border rounded-2xl p-5 space-y-3">
-                <h3 className="text-sm font-semibold text-white">Model Configuration</h3>
+                <h3 className="text-sm font-semibold text-brand-dark">Model Configuration</h3>
                 {[
                   { label: 'Algorithm', value: 'XGBoost + LSTM Ensemble' },
                   { label: 'Training Data', value: '2.3M loan applications (2018–2024)' },
@@ -462,8 +462,8 @@ export default function CreditRiskPage() {
                   { label: 'Regulatory Compliance', value: 'CBN, BOG, CBK, FSCA compliant' },
                 ].map((item) => (
                   <div key={item.label} className="flex items-start justify-between gap-4 py-2 border-b border-surface-border last:border-0">
-                    <span className="text-xs text-gray-500 flex-shrink-0">{item.label}</span>
-                    <span className="text-xs text-white text-right">{item.value}</span>
+                    <span className="text-xs text-brand-grey flex-shrink-0">{item.label}</span>
+                    <span className="text-xs text-brand-dark text-right">{item.value}</span>
                   </div>
                 ))}
               </div>

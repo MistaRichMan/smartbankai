@@ -142,8 +142,8 @@ export default function CompliancePage() {
             ].map((kpi) => (
               <div key={kpi.label} className="bg-surface-card border border-surface-border rounded-2xl p-4">
                 <div className={`text-2xl font-bold ${kpi.color} mb-1`}>{kpi.value}</div>
-                <div className="text-sm font-medium text-white">{kpi.label}</div>
-                <div className="text-xs text-gray-500 mt-0.5">{kpi.sub}</div>
+                <div className="text-sm font-medium text-brand-dark">{kpi.label}</div>
+                <div className="text-xs text-brand-grey mt-0.5">{kpi.sub}</div>
               </div>
             ))}
           </div>
@@ -152,7 +152,7 @@ export default function CompliancePage() {
           <div className="flex gap-2 flex-wrap">
             {(['overview', 'aml', 'transactions', 'reporting', 'regulatory', 'assess'] as const).map((tab) => (
               <button key={tab} onClick={() => setActiveTab(tab)}
-                className={`px-4 py-2 rounded-xl text-xs font-medium capitalize transition-all ${activeTab === tab ? 'bg-gradient-primary text-white shadow-glow-blue' : 'bg-surface-elevated text-gray-400 hover:text-white border border-surface-border'}`}>
+                className={`px-4 py-2 rounded-xl text-xs font-medium capitalize transition-all ${activeTab === tab ? 'bg-gradient-primary text-white shadow-glow-blue' : 'bg-surface-elevated text-brand-grey hover:text-brand-dark border border-surface-border'}`}>
                 {tab === 'overview' ? 'Compliance Overview' : tab === 'aml' ? `AML Alerts (${DEMO_AML_ALERTS.length})` : tab === 'transactions' ? `AML Transactions (${amlTransactions.length})` : tab === 'reporting' ? 'Regulatory Reporting' : tab === 'regulatory' ? 'Regulatory Changes' : '🔍 Assess'}
               </button>
             ))}
@@ -162,22 +162,22 @@ export default function CompliancePage() {
             <div className="space-y-4">
               {/* KYC Stats */}
               <div className="bg-surface-card border border-surface-border rounded-2xl p-5">
-                <h3 className="text-sm font-semibold text-white mb-4">KYC Status — Customer Base</h3>
+                <h3 className="text-sm font-semibold text-brand-dark mb-4">KYC Status — Customer Base</h3>
                 <div className="grid grid-cols-3 gap-4">
                   {kycStats.map((stat) => (
                     <div key={stat.label} className="text-center">
-                      <div className="text-2xl font-bold text-white mb-1">{stat.value}</div>
-                      <div className="text-xs text-gray-400 mb-2">{stat.label}</div>
+                      <div className="text-2xl font-bold text-brand-dark mb-1">{stat.value}</div>
+                      <div className="text-xs text-brand-grey mb-2">{stat.label}</div>
                       <div className="w-full bg-surface-elevated rounded-full h-2">
                         <div className="h-2 rounded-full" style={{ width: `${stat.pct}%`, backgroundColor: stat.color }}></div>
                       </div>
-                      <div className="text-xs text-gray-500 mt-1">{stat.pct}%</div>
+                      <div className="text-xs text-brand-grey mt-1">{stat.pct}%</div>
                     </div>
                   ))}
                 </div>
                 {/* Demo customers KYC */}
                 <div className="mt-4 pt-4 border-t border-surface-border">
-                  <p className="text-xs text-gray-500 mb-3">Demo Customer KYC Status</p>
+                  <p className="text-xs text-brand-grey mb-3">Demo Customer KYC Status</p>
                   <div className="flex flex-wrap gap-2">
                     {DEMO_CUSTOMERS.map(c => (
                       <div key={c.id} className={`text-xs px-2 py-1 rounded-lg border ${c.kycStatus === 'verified' ? 'bg-accent-green/10 text-accent-green border-accent-green/20' : c.kycStatus === 'pending' ? 'bg-accent-amber/10 text-accent-amber border-accent-amber/20' : 'bg-accent-red/10 text-accent-red border-accent-red/20'}`}>
@@ -191,7 +191,7 @@ export default function CompliancePage() {
               {/* Compliance Frameworks */}
               <div className="bg-surface-card border border-surface-border rounded-2xl overflow-hidden">
                 <div className="px-5 py-4 border-b border-surface-border">
-                  <h3 className="text-sm font-semibold text-white">Regulatory Framework Compliance</h3>
+                  <h3 className="text-sm font-semibold text-brand-dark">Regulatory Framework Compliance</h3>
                 </div>
                 <div className="overflow-x-auto">
                   <table className="w-full">
@@ -205,21 +205,21 @@ export default function CompliancePage() {
                     <tbody className="divide-y divide-surface-border">
                       {complianceFrameworks.map((f) => (
                         <tr key={f.name} className="hover:bg-surface-elevated transition-colors">
-                          <td className="px-4 py-3 text-xs font-medium text-white">{f.name}</td>
-                          <td className="px-4 py-3 text-xs text-gray-400">{f.region}</td>
+                          <td className="px-4 py-3 text-xs font-medium text-brand-dark">{f.name}</td>
+                          <td className="px-4 py-3 text-xs text-brand-grey">{f.region}</td>
                           <td className="px-4 py-3">
                             <div className="flex items-center gap-2">
                               <div className="w-16 bg-surface-border rounded-full h-1.5">
                                 <div className="h-1.5 rounded-full" style={{ width: `${f.score}%`, backgroundColor: f.score > 95 ? '#00C896' : f.score > 90 ? '#FFB020' : '#FF4D4D' }}></div>
                               </div>
-                              <span className="text-xs font-mono text-white">{f.score}%</span>
+                              <span className="text-xs font-mono text-brand-dark">{f.score}%</span>
                             </div>
                           </td>
                           <td className="px-4 py-3">
                             <span className={`text-xs px-2 py-0.5 rounded-lg border ${f.status === 'compliant' ? 'bg-accent-green/10 text-accent-green border-accent-green/20' : 'bg-accent-amber/10 text-accent-amber border-accent-amber/20'}`}>{f.status}</span>
                           </td>
-                          <td className="px-4 py-3 text-xs text-gray-500">{f.lastAudit}</td>
-                          <td className="px-4 py-3 text-xs text-gray-400">{f.nextDue}</td>
+                          <td className="px-4 py-3 text-xs text-brand-grey">{f.lastAudit}</td>
+                          <td className="px-4 py-3 text-xs text-brand-grey">{f.nextDue}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -233,8 +233,8 @@ export default function CompliancePage() {
             <div className="space-y-4">
               <div className="bg-surface-card border border-surface-border rounded-2xl overflow-hidden">
                 <div className="px-5 py-4 border-b border-surface-border flex items-center justify-between">
-                  <h3 className="text-sm font-semibold text-white">AML Alerts — From Banking Channels</h3>
-                  <span className="text-xs text-gray-500">Sources: Web Banking · Mobile Money · Branch · Internet Banking</span>
+                  <h3 className="text-sm font-semibold text-brand-dark">AML Alerts — From Banking Channels</h3>
+                  <span className="text-xs text-brand-grey">Sources: Web Banking · Mobile Money · Branch · Internet Banking</span>
                 </div>
                 <div className="overflow-x-auto">
                   <table className="w-full">
@@ -252,20 +252,20 @@ export default function CompliancePage() {
                           <tr key={alert.id} onClick={() => setSelectedAlert(alert)} className="hover:bg-surface-elevated transition-colors cursor-pointer">
                             <td className="px-4 py-3 text-xs font-mono text-primary">{alert.id}</td>
                             <td className="px-4 py-3">
-                              <div className="text-xs text-white font-medium">{alert.customerName}</div>
-                              <div className="text-xs text-gray-500">{alert.customerId} · {customer?.segment}</div>
+                              <div className="text-xs text-brand-dark font-medium">{alert.customerName}</div>
+                              <div className="text-xs text-brand-grey">{alert.customerId} · {customer?.segment}</div>
                             </td>
-                            <td className="px-4 py-3 text-xs text-gray-300 whitespace-nowrap">{alert.alertType}</td>
-                            <td className="px-4 py-3 text-xs font-medium text-white whitespace-nowrap">{fmtNGN(alert.amount, alert.currency)}</td>
+                            <td className="px-4 py-3 text-xs text-brand-grey whitespace-nowrap">{alert.alertType}</td>
+                            <td className="px-4 py-3 text-xs font-medium text-brand-dark whitespace-nowrap">{fmtNGN(alert.amount, alert.currency)}</td>
                             <td className="px-4 py-3">
                               <span className={`text-xs font-medium ${riskStyle[alert.riskLevel]}`}>{alert.riskLevel}</span>
                             </td>
                             <td className="px-4 py-3">
                               <span className={`text-xs px-2 py-0.5 rounded-lg border capitalize ${statusStyle[alert.status]}`}>{alert.status}</span>
                             </td>
-                            <td className="px-4 py-3 text-xs text-gray-400">{alert.jurisdiction}</td>
-                            <td className="px-4 py-3 text-xs text-gray-500 whitespace-nowrap">{fmtDate(alert.detectedAt)}</td>
-                            <td className="px-4 py-3 text-xs text-gray-400">{alert.relatedTransactionIds.join(', ')}</td>
+                            <td className="px-4 py-3 text-xs text-brand-grey">{alert.jurisdiction}</td>
+                            <td className="px-4 py-3 text-xs text-brand-grey whitespace-nowrap">{fmtDate(alert.detectedAt)}</td>
+                            <td className="px-4 py-3 text-xs text-brand-grey">{alert.relatedTransactionIds.join(', ')}</td>
                           </tr>
                         );
                       })}
@@ -278,8 +278,8 @@ export default function CompliancePage() {
               {selectedAlert && (
                 <div className="bg-surface-card border border-surface-border rounded-2xl p-5">
                   <div className="flex items-center justify-between mb-4">
-                    <h3 className="text-sm font-semibold text-white">Alert Detail — {selectedAlert.id}</h3>
-                    <button onClick={() => setSelectedAlert(null)} className="text-xs text-gray-500 hover:text-white">✕ Close</button>
+                    <h3 className="text-sm font-semibold text-brand-dark">Alert Detail — {selectedAlert.id}</h3>
+                    <button onClick={() => setSelectedAlert(null)} className="text-xs text-brand-grey hover:text-brand-dark">✕ Close</button>
                   </div>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
                     {[
@@ -293,8 +293,8 @@ export default function CompliancePage() {
                       { label: 'Related Txns', value: selectedAlert.relatedTransactionIds.join(', ') },
                     ].map(item => (
                       <div key={item.label} className="bg-surface-elevated rounded-xl p-3">
-                        <p className="text-xs text-gray-500 mb-1">{item.label}</p>
-                        <p className="text-sm text-white font-medium">{item.value}</p>
+                        <p className="text-xs text-brand-grey mb-1">{item.label}</p>
+                        <p className="text-sm text-brand-dark font-medium">{item.value}</p>
                       </div>
                     ))}
                   </div>
@@ -311,8 +311,8 @@ export default function CompliancePage() {
           {activeTab === 'transactions' && (
             <div className="bg-surface-card border border-surface-border rounded-2xl overflow-hidden">
               <div className="px-5 py-4 border-b border-surface-border">
-                <h3 className="text-sm font-semibold text-white">AML-Flagged Transactions — All Channels</h3>
-                <p className="text-xs text-gray-500 mt-0.5">{amlTransactions.length} transactions flagged for AML review across Web Banking, Mobile Money, Branch, and Internet Banking</p>
+                <h3 className="text-sm font-semibold text-brand-dark">AML-Flagged Transactions — All Channels</h3>
+                <p className="text-xs text-brand-grey mt-0.5">{amlTransactions.length} transactions flagged for AML review across Web Banking, Mobile Money, Branch, and Internet Banking</p>
               </div>
               <div className="overflow-x-auto">
                 <table className="w-full">
@@ -330,20 +330,20 @@ export default function CompliancePage() {
                         <tr key={tx.id} className="hover:bg-surface-elevated transition-colors">
                           <td className="px-4 py-3 text-xs font-mono text-primary">{tx.id}</td>
                           <td className="px-4 py-3">
-                            <div className="text-xs text-white font-medium">{customer?.name}</div>
-                            <div className="text-xs text-gray-500">{tx.customerId}</div>
+                            <div className="text-xs text-brand-dark font-medium">{customer?.name}</div>
+                            <div className="text-xs text-brand-grey">{tx.customerId}</div>
                           </td>
-                          <td className="px-4 py-3 text-xs text-gray-300 max-w-xs truncate">{tx.description}</td>
-                          <td className="px-4 py-3 text-xs font-medium text-white whitespace-nowrap">{fmtNGN(tx.amount)}</td>
-                          <td className="px-4 py-3 text-xs text-gray-400 whitespace-nowrap">{tx.channel}</td>
-                          <td className="px-4 py-3 text-xs text-gray-400 whitespace-nowrap">{tx.location}</td>
+                          <td className="px-4 py-3 text-xs text-brand-grey max-w-xs truncate">{tx.description}</td>
+                          <td className="px-4 py-3 text-xs font-medium text-brand-dark whitespace-nowrap">{fmtNGN(tx.amount)}</td>
+                          <td className="px-4 py-3 text-xs text-brand-grey whitespace-nowrap">{tx.channel}</td>
+                          <td className="px-4 py-3 text-xs text-brand-grey whitespace-nowrap">{tx.location}</td>
                           <td className="px-4 py-3">
                             <span className={`text-xs font-bold ${tx.fraudRiskScore > 70 ? 'text-accent-red' : tx.fraudRiskScore > 50 ? 'text-accent-amber' : 'text-accent-green'}`}>{tx.fraudRiskScore}/100</span>
                           </td>
                           <td className="px-4 py-3">
                             <span className={`text-xs px-2 py-0.5 rounded-lg border capitalize ${statusStyle[tx.status] || 'text-gray-400 border-gray-700'}`}>{tx.status}</span>
                           </td>
-                          <td className="px-4 py-3 text-xs text-gray-500 whitespace-nowrap">{fmtDate(tx.createdAt)}</td>
+                          <td className="px-4 py-3 text-xs text-brand-grey whitespace-nowrap">{fmtDate(tx.createdAt)}</td>
                         </tr>
                       );
                     })}
@@ -356,7 +356,7 @@ export default function CompliancePage() {
           {activeTab === 'reporting' && (
             <div className="space-y-4">
               <div className="bg-surface-card border border-surface-border rounded-2xl p-5">
-                <h3 className="text-sm font-semibold text-white mb-4">Monthly Regulatory Reporting</h3>
+                <h3 className="text-sm font-semibold text-brand-dark mb-4">Monthly Regulatory Reporting</h3>
                 <ResponsiveContainer width="100%" height={220}>
                   <BarChart data={reportingData}>
                     <CartesianGrid strokeDasharray="3 3" stroke="#1E2D45" />
@@ -375,21 +375,21 @@ export default function CompliancePage() {
           {activeTab === 'regulatory' && (
             <div className="bg-surface-card border border-surface-border rounded-2xl overflow-hidden">
               <div className="px-5 py-4 border-b border-surface-border">
-                <h3 className="text-sm font-semibold text-white">Upcoming Regulatory Changes</h3>
+                <h3 className="text-sm font-semibold text-brand-dark">Upcoming Regulatory Changes</h3>
               </div>
               <div className="divide-y divide-surface-border">
                 {regulatoryChanges.map((change) => (
                   <div key={change.regulation} className="px-5 py-4 flex items-start justify-between gap-4">
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-1">
-                        <span className="text-sm font-medium text-white">{change.regulation}</span>
+                        <span className="text-sm font-medium text-brand-dark">{change.regulation}</span>
                         <span className={`text-xs px-2 py-0.5 rounded-lg border ${changeStatusStyle[change.status]}`}>{change.status.replace('_', ' ')}</span>
                       </div>
-                      <p className="text-xs text-gray-400">{change.description}</p>
+                      <p className="text-xs text-brand-grey">{change.description}</p>
                     </div>
                     <div className="text-right flex-shrink-0">
                       <div className={`text-xs font-medium ${change.impact === 'High' ? 'text-accent-red' : change.impact === 'Medium' ? 'text-accent-amber' : 'text-accent-green'}`}>{change.impact} Impact</div>
-                      <div className="text-xs text-gray-500 mt-0.5">Due: {change.deadline}</div>
+                      <div className="text-xs text-brand-grey mt-0.5">Due: {change.deadline}</div>
                     </div>
                   </div>
                 ))}
@@ -400,31 +400,31 @@ export default function CompliancePage() {
           {activeTab === 'assess' && (
             <div className="grid grid-cols-1 xl:grid-cols-2 gap-4">
               <div className="bg-surface-card border border-surface-border rounded-2xl p-5">
-                <h3 className="text-sm font-semibold text-white mb-1">Compliance Assessment</h3>
-                <p className="text-xs text-gray-500 mb-4">Powered by SmartBankAI Engine · Uses live AML alerts from banking channels</p>
+                <h3 className="text-sm font-semibold text-brand-dark mb-1">Compliance Assessment</h3>
+                <p className="text-xs text-brand-grey mb-4">Powered by SmartBankAI Engine · Uses live AML alerts from banking channels</p>
                 <div className="space-y-3">
                   <div>
-                    <label className="block text-xs font-medium text-gray-400 mb-1">Framework</label>
+                    <label className="block text-xs font-medium text-brand-grey mb-1">Framework</label>
                     <select value={assessForm.framework} onChange={(e) => setAssessForm(prev => ({ ...prev, framework: e.target.value }))}
-                      className="w-full bg-surface-elevated border border-surface-border rounded-xl px-3 py-2 text-sm text-white outline-none focus:border-primary/50">
+                      className="w-full bg-surface-elevated border border-surface-border rounded-xl px-3 py-2 text-sm text-brand-dark outline-none focus:border-primary/50">
                       {complianceFrameworks.map(f => <option key={f.name}>{f.name}</option>)}
                     </select>
                   </div>
                   <div>
-                    <label className="block text-xs font-medium text-gray-400 mb-1">Assessment Period</label>
+                    <label className="block text-xs font-medium text-brand-grey mb-1">Assessment Period</label>
                     <input value={assessForm.period} onChange={(e) => setAssessForm(prev => ({ ...prev, period: e.target.value }))}
-                      className="w-full bg-surface-elevated border border-surface-border rounded-xl px-3 py-2 text-sm text-white outline-none focus:border-primary/50" />
+                      className="w-full bg-surface-elevated border border-surface-border rounded-xl px-3 py-2 text-sm text-brand-dark outline-none focus:border-primary/50" />
                   </div>
                   <div>
-                    <label className="block text-xs font-medium text-gray-400 mb-1">Scope</label>
+                    <label className="block text-xs font-medium text-brand-grey mb-1">Scope</label>
                     <textarea value={assessForm.scope} onChange={(e) => setAssessForm(prev => ({ ...prev, scope: e.target.value }))}
-                      rows={3} className="w-full bg-surface-elevated border border-surface-border rounded-xl px-3 py-2 text-sm text-white outline-none focus:border-primary/50 resize-none" />
+                      rows={3} className="w-full bg-surface-elevated border border-surface-border rounded-xl px-3 py-2 text-sm text-brand-dark outline-none focus:border-primary/50 resize-none" />
                   </div>
                   <div className="bg-surface-elevated rounded-xl p-3">
-                    <p className="text-xs text-gray-500 mb-2">Live AML Context (from banking channels)</p>
+                    <p className="text-xs text-brand-grey mb-2">Live AML Context (from banking channels)</p>
                     <div className="space-y-1">
                       {DEMO_AML_ALERTS.slice(0, 3).map(a => (
-                        <div key={a.id} className="text-xs text-gray-400">{a.id}: {a.alertType} — {a.customerName} ({a.riskLevel})</div>
+                        <div key={a.id} className="text-xs text-brand-grey">{a.id}: {a.alertType} — {a.customerName} ({a.riskLevel})</div>
                       ))}
                     </div>
                   </div>
@@ -436,7 +436,7 @@ export default function CompliancePage() {
               </div>
 
               <div className="bg-surface-card border border-surface-border rounded-2xl p-5">
-                <h3 className="text-sm font-semibold text-white mb-4">AI Compliance Report</h3>
+                <h3 className="text-sm font-semibold text-brand-dark mb-4">AI Compliance Report</h3>
                 {assessError && <div className="px-4 py-3 bg-accent-red/10 border border-accent-red/20 rounded-xl text-sm text-accent-red mb-4">{assessError}</div>}
                 {assessmentResult ? (
                   <div className="space-y-4">
@@ -446,38 +446,38 @@ export default function CompliancePage() {
                           {assessmentResult.compliance_status}
                         </span>
                         <div className="text-right">
-                          <div className="text-xs text-gray-400">Risk Level: <span className={`font-semibold ${riskStyle[assessmentResult.risk_level] || 'text-white'}`}>{assessmentResult.risk_level}</span></div>
-                          <div className="text-xs text-gray-400">Confidence: <span className="text-white font-semibold">{assessmentResult.confidence}%</span></div>
+                          <div className="text-xs text-brand-grey">Risk Level: <span className={`font-semibold ${riskStyle[assessmentResult.risk_level] || 'text-white'}`}>{assessmentResult.risk_level}</span></div>
+                          <div className="text-xs text-brand-grey">Confidence: <span className="text-white font-semibold">{assessmentResult.confidence}%</span></div>
                         </div>
                       </div>
                     </div>
                     {assessmentResult.findings?.length > 0 && (
                       <div>
-                        <p className="text-xs text-gray-500 mb-2">Findings</p>
-                        <div className="space-y-1">{assessmentResult.findings.map((f, i) => <div key={i} className="flex items-start gap-2 text-xs text-gray-300"><span className="text-primary mt-0.5">•</span>{f}</div>)}</div>
+                        <p className="text-xs text-brand-grey mb-2">Findings</p>
+                        <div className="space-y-1">{assessmentResult.findings.map((f, i) => <div key={i} className="flex items-start gap-2 text-xs text-brand-grey"><span className="text-primary mt-0.5">•</span>{f}</div>)}</div>
                       </div>
                     )}
                     {assessmentResult.violations?.length > 0 && (
                       <div>
-                        <p className="text-xs text-gray-500 mb-2">Violations</p>
-                        <div className="space-y-1">{assessmentResult.violations.map((v, i) => <div key={i} className="flex items-start gap-2 text-xs text-gray-300"><span className="text-accent-red mt-0.5">!</span>{v}</div>)}</div>
+                        <p className="text-xs text-brand-grey mb-2">Violations</p>
+                        <div className="space-y-1">{assessmentResult.violations.map((v, i) => <div key={i} className="flex items-start gap-2 text-xs text-brand-grey"><span className="text-accent-red mt-0.5">!</span>{v}</div>)}</div>
                       </div>
                     )}
                     {assessmentResult.remediation_actions?.length > 0 && (
                       <div>
-                        <p className="text-xs text-gray-500 mb-2">Remediation Actions</p>
-                        <div className="space-y-1">{assessmentResult.remediation_actions.map((a, i) => <div key={i} className="flex items-start gap-2 text-xs text-gray-300"><span className="text-accent-green mt-0.5">→</span>{a}</div>)}</div>
+                        <p className="text-xs text-brand-grey mb-2">Remediation Actions</p>
+                        <div className="space-y-1">{assessmentResult.remediation_actions.map((a, i) => <div key={i} className="flex items-start gap-2 text-xs text-brand-grey"><span className="text-accent-green mt-0.5">→</span>{a}</div>)}</div>
                       </div>
                     )}
-                    {assessmentResult.report_summary && <div className="p-3 bg-surface-elevated rounded-xl"><p className="text-xs text-gray-400 italic">{assessmentResult.report_summary}</p></div>}
+                    {assessmentResult.report_summary && <div className="p-3 bg-surface-elevated rounded-xl"><p className="text-xs text-brand-grey italic">{assessmentResult.report_summary}</p></div>}
                   </div>
                 ) : (
                   <div className="flex flex-col items-center justify-center h-48 text-center">
                     <div className="w-12 h-12 rounded-xl bg-surface-elevated flex items-center justify-center mb-3">
                       <svg className="w-6 h-6 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
                     </div>
-                    <p className="text-sm text-gray-500">Run assessment to get AI compliance report</p>
-                    <p className="text-xs text-gray-600 mt-1">Uses live AML alerts from banking channels</p>
+                    <p className="text-sm text-brand-grey">Run assessment to get AI compliance report</p>
+                    <p className="text-xs text-brand-grey mt-1">Uses live AML alerts from banking channels</p>
                   </div>
                 )}
               </div>

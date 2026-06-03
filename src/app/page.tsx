@@ -127,8 +127,8 @@ export default function CommandCenterPage() {
                       {card.change}
                     </span>
                   </div>
-                  <div className="text-2xl font-bold text-white mb-1">{card.value}</div>
-                  <div className="text-sm text-gray-500">{card.label}</div>
+                  <div className="text-2xl font-bold text-brand-dark mb-1">{card.value}</div>
+                  <div className="text-sm text-brand-grey">{card.label}</div>
                 </div>
               ))}
             </div>
@@ -139,10 +139,10 @@ export default function CommandCenterPage() {
               <div className="xl:col-span-2 bg-surface-card border border-surface-border rounded-2xl p-5">
                 <div className="flex items-center justify-between mb-5">
                   <div>
-                    <h3 className="text-sm font-semibold text-white">Transaction Volume</h3>
-                    <p className="text-xs text-gray-500 mt-0.5">Real-time monitoring across all channels</p>
+                    <h3 className="text-sm font-semibold text-brand-dark">Transaction Volume</h3>
+                    <p className="text-xs text-brand-grey mt-0.5">Real-time monitoring across all channels</p>
                   </div>
-                  <div className="flex items-center gap-4 text-xs text-gray-500">
+                  <div className="flex items-center gap-4 text-xs text-brand-grey">
                     <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-primary inline-block"></span>Approved</span>
                     <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-accent-red inline-block"></span>Flagged</span>
                   </div>
@@ -175,8 +175,8 @@ export default function CommandCenterPage() {
               {/* Risk Distribution */}
               <div className="bg-surface-card border border-surface-border rounded-2xl p-5">
                 <div className="mb-5">
-                  <h3 className="text-sm font-semibold text-white">Risk Distribution</h3>
-                  <p className="text-xs text-gray-500 mt-0.5">Portfolio risk breakdown</p>
+                  <h3 className="text-sm font-semibold text-brand-dark">Risk Distribution</h3>
+                  <p className="text-xs text-brand-grey mt-0.5">Portfolio risk breakdown</p>
                 </div>
                 <div className="flex items-center justify-center mb-4">
                   <ResponsiveContainer width="100%" height={160}>
@@ -197,9 +197,9 @@ export default function CommandCenterPage() {
                     <div key={item.name} className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
                         <div className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: item.color }}></div>
-                        <span className="text-xs text-gray-400">{item.name}</span>
+                        <span className="text-xs text-brand-grey">{item.name}</span>
                       </div>
-                      <span className="text-xs font-semibold text-white">{item.value}%</span>
+                      <span className="text-xs font-semibold text-brand-dark">{item.value}%</span>
                     </div>
                   ))}
                 </div>
@@ -212,8 +212,8 @@ export default function CommandCenterPage() {
               <div className="bg-surface-card border border-surface-border rounded-2xl p-5">
                 <div className="flex items-center justify-between mb-5">
                   <div>
-                    <h3 className="text-sm font-semibold text-white">Agent Performance</h3>
-                    <p className="text-xs text-gray-500 mt-0.5">Uptime & request volume</p>
+                    <h3 className="text-sm font-semibold text-brand-dark">Agent Performance</h3>
+                    <p className="text-xs text-brand-grey mt-0.5">Uptime & request volume</p>
                   </div>
                   <span className="text-xs text-accent-green bg-accent-green/10 px-2 py-1 rounded-lg border border-accent-green/20">All Healthy</span>
                 </div>
@@ -221,15 +221,15 @@ export default function CommandCenterPage() {
                   {agentPerformance.map((agent) => (
                     <div key={agent.name} className="flex items-center gap-3">
                       <div className="w-2 h-2 rounded-full bg-accent-green flex-shrink-0"></div>
-                      <span className="text-xs text-gray-400 w-28 flex-shrink-0 truncate">{agent.name}</span>
+                      <span className="text-xs text-brand-grey w-28 flex-shrink-0 truncate">{agent.name}</span>
                       <div className="flex-1 bg-surface-elevated rounded-full h-1.5">
                         <div
                           className="h-1.5 rounded-full bg-gradient-primary"
                           style={{ width: `${agent.uptime}%` }}
                         ></div>
                       </div>
-                      <span className="text-xs font-mono text-white w-12 text-right">{agent.uptime}%</span>
-                      <span className="text-xs text-gray-600 w-16 text-right font-mono">{(agent.requests / 1000).toFixed(1)}K</span>
+                      <span className="text-xs font-mono text-brand-dark w-12 text-right">{agent.uptime}%</span>
+                      <span className="text-xs text-brand-grey w-16 text-right font-mono">{(agent.requests / 1000).toFixed(1)}K</span>
                     </div>
                   ))}
                 </div>
@@ -239,8 +239,8 @@ export default function CommandCenterPage() {
               <div className="bg-surface-card border border-surface-border rounded-2xl p-5">
                 <div className="flex items-center justify-between mb-5">
                   <div>
-                    <h3 className="text-sm font-semibold text-white">Recent Alerts</h3>
-                    <p className="text-xs text-gray-500 mt-0.5">Live agent notifications</p>
+                    <h3 className="text-sm font-semibold text-brand-dark">Recent Alerts</h3>
+                    <p className="text-xs text-brand-grey mt-0.5">Live agent notifications</p>
                   </div>
                   <button className="text-xs text-primary hover:underline">View all</button>
                 </div>
@@ -252,13 +252,13 @@ export default function CommandCenterPage() {
                       </span>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 mb-0.5">
-                          <span className="text-xs font-medium text-white">{alert.type}</span>
-                          <span className="text-xs text-gray-600 font-mono">{alert.id}</span>
+                          <span className="text-xs font-medium text-brand-dark">{alert.type}</span>
+                          <span className="text-xs text-brand-grey font-mono">{alert.id}</span>
                         </div>
-                        <p className="text-xs text-gray-400 truncate">{alert.desc}</p>
+                        <p className="text-xs text-brand-grey truncate">{alert.desc}</p>
                       </div>
                       <div className="text-right flex-shrink-0">
-                        <div className="text-xs text-gray-600">{alert.time}</div>
+                        <div className="text-xs text-brand-grey">{alert.time}</div>
                         <div className="text-xs text-primary mt-0.5">{alert.agent}</div>
                       </div>
                     </div>

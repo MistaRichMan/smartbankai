@@ -300,14 +300,14 @@ export default function AgentsPage() {
           {/* Stats Bar */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
             {[
-              { label: 'Total Agents', value: '9', color: 'text-white' },
+              { label: 'Total Agents', value: '9', color: 'text-brand-dark' },
               { label: 'Online', value: '8', color: 'text-accent-green' },
               { label: 'Training', value: '1', color: 'text-accent-amber' },
               { label: 'Avg Accuracy', value: '96.3%', color: 'text-primary' },
             ].map((stat) => (
               <div key={stat.label} className="bg-surface-card border border-surface-border rounded-xl px-4 py-3 text-center">
                 <div className={`text-xl font-bold ${stat.color}`}>{stat.value}</div>
-                <div className="text-xs text-gray-500 mt-0.5">{stat.label}</div>
+                <div className="text-xs text-brand-grey mt-0.5">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -319,7 +319,7 @@ export default function AgentsPage() {
                 <button
                   key={v}
                   onClick={() => setActiveView(v)}
-                  className={`px-4 py-1.5 rounded-lg text-xs font-medium transition-all ${activeView === v ? 'bg-gradient-primary text-white shadow-glow-blue' : 'text-gray-400 hover:text-white'}`}
+                  className={`px-4 py-1.5 rounded-lg text-xs font-medium transition-all ${activeView === v ? 'bg-gradient-primary text-white shadow-glow-blue' : 'text-brand-grey hover:text-brand-dark'}`}
                 >
                   {v === 'agents' ? '🤖 Agent Directory' : '🏦 Banking Use Cases'}
                 </button>
@@ -334,7 +334,7 @@ export default function AgentsPage() {
                     className={`px-3 py-1.5 rounded-xl text-xs font-medium transition-all capitalize ${
                       filter === f
                         ? 'bg-gradient-primary text-white shadow-glow-blue'
-                        : 'bg-surface-elevated text-gray-400 hover:text-white border border-surface-border'
+                        : 'bg-surface-elevated text-brand-grey hover:text-brand-dark border border-surface-border'
                     }`}
                   >
                     {f === 'all' ? 'All Agents' : f.charAt(0).toUpperCase() + f.slice(1)}
@@ -363,8 +363,8 @@ export default function AgentsPage() {
                       </div>
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 flex-wrap">
-                          <h3 className="text-sm font-semibold text-white truncate">{agent.name}</h3>
-                          <span className="text-xs text-gray-600 font-mono">{agent.version}</span>
+                          <h3 className="text-sm font-semibold text-brand-dark truncate">{agent.name}</h3>
+                          <span className="text-xs text-brand-grey font-mono">{agent.version}</span>
                         </div>
                         <div className="flex items-center gap-2 mt-1">
                           <div className={`w-1.5 h-1.5 rounded-full ${sc.dot} ${agent.status === 'online' ? 'animate-pulse-slow' : ''}`}></div>
@@ -373,21 +373,21 @@ export default function AgentsPage() {
                       </div>
                     </div>
 
-                    <p className="text-xs text-gray-400 mb-4 line-clamp-2">{agent.description}</p>
+                    <p className="text-xs text-brand-grey mb-4 line-clamp-2">{agent.description}</p>
 
                     {/* Metrics */}
                     <div className="grid grid-cols-3 gap-2 mb-4">
                       <div className="bg-surface-elevated rounded-xl p-2 text-center">
-                        <div className="text-sm font-bold text-white">{agent.accuracy}%</div>
-                        <div className="text-xs text-gray-600">Accuracy</div>
+                        <div className="text-sm font-bold text-brand-dark">{agent.accuracy}%</div>
+                        <div className="text-xs text-brand-grey">Accuracy</div>
                       </div>
                       <div className="bg-surface-elevated rounded-xl p-2 text-center">
                         <div className="text-sm font-bold text-primary">{(agent.requestsToday / 1000).toFixed(0)}K</div>
-                        <div className="text-xs text-gray-600">Req/day</div>
+                        <div className="text-xs text-brand-grey">Req/day</div>
                       </div>
                       <div className="bg-surface-elevated rounded-xl p-2 text-center">
                         <div className="text-sm font-bold text-accent-cyan">{agent.avgLatency}</div>
-                        <div className="text-xs text-gray-600">Latency</div>
+                        <div className="text-xs text-brand-grey">Latency</div>
                       </div>
                     </div>
 
@@ -399,12 +399,12 @@ export default function AgentsPage() {
                         </span>
                       ))}
                       {agent.capabilities.length > 4 && (
-                        <span className="text-xs text-gray-600 px-1 py-0.5">+{agent.capabilities.length - 4}</span>
+                        <span className="text-xs text-brand-grey px-1 py-0.5">+{agent.capabilities.length - 4}</span>
                       )}
                     </div>
 
                     {/* Last Action */}
-                    <div className="text-xs text-gray-600 italic mb-3">Last: {agent.lastAction}</div>
+                    <div className="text-xs text-brand-grey italic mb-3">Last: {agent.lastAction}</div>
 
                     <Link
                       href={agent.href}
@@ -430,7 +430,7 @@ export default function AgentsPage() {
                 ].map((s) => (
                   <div key={s.label} className="bg-surface-card border border-surface-border rounded-2xl p-4 text-center">
                     <div className={`text-2xl font-bold ${s.color}`}>{s.value}</div>
-                    <div className="text-xs text-gray-500 mt-1">{s.label}</div>
+                    <div className="text-xs text-brand-grey mt-1">{s.label}</div>
                   </div>
                 ))}
               </div>
@@ -440,20 +440,20 @@ export default function AgentsPage() {
                   <div key={domain.domain} className={`bg-surface-card border ${domain.color} rounded-2xl p-5`}>
                     <div className="flex items-center gap-2 mb-4">
                       <span className="text-xl">{domain.icon}</span>
-                      <h3 className="text-sm font-semibold text-white">{domain.domain}</h3>
+                      <h3 className="text-sm font-semibold text-brand-dark">{domain.domain}</h3>
                     </div>
                     <div className="space-y-3">
                       {domain.useCases.map((uc) => (
                         <div key={uc.name} className="p-3 bg-surface-elevated rounded-xl border border-surface-border">
                           <div className="flex items-start justify-between gap-2 mb-1.5">
-                            <span className="text-xs font-medium text-white">{uc.name}</span>
+                            <span className="text-xs font-medium text-brand-dark">{uc.name}</span>
                           </div>
                           <div className="flex flex-wrap gap-1 mb-1.5">
                             {uc.agents.map((a) => (
                               <span key={a} className="text-xs bg-primary/10 text-primary border border-primary/20 px-1.5 py-0.5 rounded-full">{a}</span>
                             ))}
                           </div>
-                          <p className="text-xs text-gray-500">{uc.benefit}</p>
+                          <p className="text-xs text-brand-grey">{uc.benefit}</p>
                         </div>
                       ))}
                     </div>
